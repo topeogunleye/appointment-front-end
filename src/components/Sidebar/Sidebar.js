@@ -1,33 +1,85 @@
 import { useState } from 'react';
+import Image from '../../images/image.png';
+import * as FaIcons from 'react-icons/fa';
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      {isOpen
-        ? (
-          <button type="button" className="fixed  z-30 flex items-center cursor-pointer left-10 top-6" onClick={() => setIsOpen(!isOpen)}>
-            <svg
-              onClick={() => setIsOpen(!isOpen)}
-              className=""
-              fill="#2563EB"
-              viewBox="0 0 100 80"
-              width="40"
-              height="40"
-            >
-              <rect width="100" height="10" />
-              <rect y="30" width="100" height="10" />
-              <rect y="60" width="100" height="10" />
-            </svg>
-          </button>
-        )
-        : (
-          <div className={`sidebar fixed top-0 left-0 bg-gray-200 w-[20vw] h-full p-10 ${isOpen ? 'translate-x-0' : 'translate-x-full'} ease-in-out duration-300`}>
-            <button type="button" className="text-xl text-black fixed top-4 left-4" onClick={() => setIsOpen(!isOpen)}>X</button>
-            <h1>My Sidebar</h1>
-          </div>
-        )}
-    </>
+    <div className="grid align-items-center w-64 h-screen px-4 py-8 bg-white border-2 border-rose-600">
+    <div className="grid align-items-center">
+      <img src={Image} alt="logo" className="" />
+      <h1 className="mt-2 text-white font-bold text-lg">Company Name</h1>
+    </div>
+    <nav className="flex flex-col">
+      <a
+        href="#"
+        className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 text-lg font-bold"
+      >
+        RESERVE
+      </a>
+      <a
+        href="#"
+        className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 mt-2 text-lg font-bold"
+      >
+        MY RESEVATIONS
+      </a>
+      <a
+        href="#"
+        className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 mt-2 text-lg font-bold"
+      >
+        ADD CAR REPAIR
+      </a>
+      <a
+      href="#"
+      className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 mt-2 text-lg font-bold"
+    >
+      REMOVE CAR REPAIR
+    </a>
+
+      <div className="social-media flex justify-between w-4/5">
+        <a
+          href="https://github.com/topeogunleye
+              "
+          className="fa fa-github"
+          target="blank"
+        >
+          <FaIcons.FaGithub />
+        </a>
+        <a
+          href="https://web.facebook.com/topeogunleye21
+          "
+          className="fa fa-facebook"
+          target="blank"
+        >
+          <FaIcons.FaFacebook />
+        </a>
+        <a
+          href="https://twitter.com/topeogunleye21
+          "
+          className="fa fa-twitter"
+          target="blank"
+        >
+          <FaIcons.FaTwitter />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ogunleye
+          "
+          className="fa fa-linkedin"
+          target="blank"
+        >
+          <FaIcons.FaLinkedin />
+        </a>
+        <a
+          href="https://www.instagram.com/topeogunleye1/
+          "
+          className="fa fa-instagram"
+          target="blank"
+        >
+          <FaIcons.FaInstagram />
+        </a>
+    </div>
+    </nav>
+  </div>
   );
 }
