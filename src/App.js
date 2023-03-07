@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
-import NewReserveForm from './components/pages/newreserveform/NewReserveForm';
+import CarRepairs from './components/pages/carrepairs/CarRepairs';
 import RemoveReservationForm from './components/pages/removereservationForm/RemoveReservationForm';
 import AddReservationForm from './components/pages/addreservationform/AddReservationForm';
 import Services from './components/pages/services/Services';
@@ -22,8 +22,8 @@ function App() {
               )}
             />
             <Route
-              path="/NewReserveForm"
-              element={<NewReserveForm />}
+              path="/CarRepairs"
+              element={<CarRepairs />}
             />
             <Route
               path="/services"
