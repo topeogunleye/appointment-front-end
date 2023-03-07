@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import * as FaIcons from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Image from '../../images/image.png';
 import SidebarData from './SidebarData';
 import './Sidebar.css';
@@ -35,7 +35,7 @@ export default function Sidebar() {
   });
 
   return (
-    <div className="sidebar transition-all duration-1000 ease-out border-r border-gray-500">
+    <div className="sidebar transition-all duration-1000 ease-out">
       <button type="button" className="menu-bars ml-4 md:ml-8 text-2xl sm:text-3xl sm:collapse">
         <FaIcons.FaBars onClick={showSidebar} />
       </button>
@@ -46,9 +46,9 @@ export default function Sidebar() {
         <ul className="nav-menu-items my-32">
           {SidebarData.map((item, index) => (
             <li key={index} className={item.cName}>
-              <Link to={item.path}>
+              <NavLink to={item.path}>
                 <span className="item-title">{item.title}</span>
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
