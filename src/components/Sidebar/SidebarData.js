@@ -16,7 +16,7 @@ const SidebarData = [
   },
   {
     title: 'Remove Resevation',
-    path: '/RemoveervationForm/',
+    path: '/RemoveReservationForm/',
     cName: 'nav-text',
   },
 ];
