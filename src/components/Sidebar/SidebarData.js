@@ -1,7 +1,7 @@
 const SidebarData = [
   {
-    title: 'Resevere',
-    path: '/NewReserveForm/',
+    title: 'Car Repairs',
+    path: '/CarRepairs/',
     cName: 'nav-text',
   },
   {
