@@ -1,47 +1,57 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import * as FaIcons from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Image from '../../images/image.png';
+import SidebarData from './SidebarData';
+import './Sidebar.css';
+
+const useClickOutside = (handler) => {
+  const domNode = useRef();
+
+  useEffect(() => {
+    const maybeHandler = (event) => {
+      if (!domNode.current.contains(event.target)) {
+        handler();
+      }
+    };
+
+    document.addEventListener('mousedown', maybeHandler);
+
+    return () => {
+      document.removeEventListener('mousedown', maybeHandler);
+    };
+  });
+
+  return domNode;
+};
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
+
+  const domNode = useClickOutside(() => {
+    setSidebar(false);
+  });
 
   return (
-    <div className="grid align-items-center w-64 h-screen px-4 py-8 bg-white border-r border-gray-500 sticky">
-      <div className="flex justify-center w-full">
-        <img src={Image} alt="logo" className="w-12 h-11" />
+    <div className="sidebar transition-all duration-1000 ease-out border-r border-gray-500">
+      <button type="button" className="menu-bars ml-4 md:ml-8 text-2xl sm:text-3xl sm:collapse">
+        <FaIcons.FaBars onClick={showSidebar} />
+      </button>
+      <div className="grid items-center w-full">
+        <img src={Image} alt="logo" className="w-10 h-10" />
       </div>
-      <nav className="flex flex-col">
-        <NavLink
-          to="/services"
-          className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 text-lg font-bold"
-        >
-          CAR REPAIR SERVICES
-        </NavLink>
-        <NavLink
-          to="/reservenewform"
-          className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 text-lg font-bold"
-        >
-          RESERVE
-        </NavLink>
-        <NavLink
-          to="/reservations"
-          className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 mt-2 text-lg font-bold"
-        >
-          MY RESEVATIONS
-        </NavLink>
-        <NavLink
-          to="/addcarrepairform"
-          className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 mt-2 text-lg font-bold"
-        >
-          MAKE RESERVATION
-        </NavLink>
-        <NavLink
-          to="/removecarrepairform"
-          className="text-gray-900 hover:bg-green-300 hover:text-white py-2 px-4 mt-2 text-lg font-bold"
-        >
-          CANCEL RESERVATIONS
-        </NavLink>
+      <nav ref={domNode} className={sidebar ? 'nav-menu active bg-white' : 'nav-menu'}>
+        <ul className="nav-menu-items my-32">
+          {SidebarData.map((item, index) => (
+            <li key={index} className={item.cName}>
+              <Link to={item.path}>
+                <span className="item-title">{item.title}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <div className="social-media flex justify-between w-3/5 absolute bottom-2 left-3">
           <a
