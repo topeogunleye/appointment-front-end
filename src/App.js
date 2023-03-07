@@ -24,46 +24,31 @@ function App() {
           <Route
             path="/CarRepairs"
             element={
-              <div className="flex">
-                <Sidebar />
-                <CarRepairs />
-              </div>
+              <CarRepairs />
             }
           />
           <Route
             path="/services"
             element={
-              <div className="flex">
-                <Sidebar />
-                <Services />
-              </div>
+              <Services />
             }
           />
           <Route
             path="/reservations"
             element={
-              <div className="flex">
-                <Sidebar />
-                <Reservations />
-              </div>
+              <Reservations />
             }
           />
           <Route
             path="/AddReservationForm"
             element={
-              <div className="flex">
-                <Sidebar />
-                <AddReservationForm />
-              </div>
+              <AddReservationForm />
             }
           />
           <Route
             path="/RemoveReservationForm"
             element={
-              <div className="flex">
-                <Sidebar />
-                <RemoveReservationForm />
-              </div>
+              <RemoveReservationForm />
             }
           />
         </Routes>
