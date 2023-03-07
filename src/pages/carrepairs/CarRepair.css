@@ -1,8 +1,5 @@
-.App {
-  text-align: center;
-}
-
 .test {
   display: grid;
   align-items: center;
+  margin-left: 100px;
 }
