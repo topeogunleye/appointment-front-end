@@ -8,33 +8,33 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={
+            element={(
               <div className="flex">
                 <Sidebar />
                 <div>This is the main index page for all of the services</div>
               </div>
-            }
+            )}
           />
           <Route
-            path="/reservenewform"
-            element={
+            path="/NewReserveForm"
+            element={(
               <>
                 <div>This is the add new reservation form page</div>
               </>
-            }
+            )}
           />
           <Route
             path="/services"
-            element={
+            element={(
               <div className="flex">
                 <Sidebar />
                 <div>This will show the details of each service</div>
               </div>
-            }
+            )}
           />
           <Route
             path="/reservations"
-            element={
+            element={(
               <>
                 <div className="flex">
                   <Sidebar />
@@ -44,25 +44,25 @@ function App() {
                   </div>
                 </div>
               </>
-            }
+            )}
           />
           <Route
-            path="/addcarrepairform"
-            element={
+            path="/AddReservationForm"
+            element={(
               <>
                 <div>This is the form for adding a new car repair service</div>
               </>
-            }
+            )}
           />
           <Route
-            path="/removecarrepairform"
-            element={
+            path="/RemoveervationForm"
+            element={(
               <>
                 <div>
                   This is the page where we can remove a car repair service
                 </div>
               </>
-            }
+            )}
           />
         </Routes>
       </BrowserRouter>
