@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
-import CarRepairs from './components/pages/carrepairs/CarRepairs';
-import RemoveReservationForm from './components/pages/removereservationForm/RemoveReservationForm';
-import AddReservationForm from './components/pages/addreservationform/AddReservationForm';
-import Services from './components/pages/services/Services';
-import Reservations from './components/pages/reservations/Reservations';
+import CarRepairs from './pages/carrepairs/CarRepairs';
+import RemoveReservationForm from './pages/removereservationForm/RemoveReservationForm';
+import AddReservationForm from './pages/addreservationform/AddReservationForm';
+import Services from './pages/services/Services';
+import Reservations from './pages/reservations/Reservations';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
+        <Routes className="flex">
           <Route path="/" element={<Sidebar />}>
             <Route
               path="/"
