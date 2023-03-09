@@ -21,13 +21,18 @@ function AddReservationForm() {
             please use the selector below
           </p>
           <div className="flex items-center justify-between m-auto w-80">
-            <Link
-              to="/CarRepairForm/"
-              className="button bg-green flex justify-between items-center  w-36"
-            >
-              London
-              <FaIcons.FaArrowDown className="inline" />
-            </Link>
+            <div className="relative">
+              <select className="block appearance-none w-full bg-green border border-white-300 hover:border-white-400 rounded-full py-2 pl-4 pr-8 leading-tight focus:outline-none focus:ring focus:border-blue-300">
+                <option>New York</option>
+                <option>Los Angeles</option>
+                <option>Chicago</option>
+                <option>Houston</option>
+                <option>Philadelphia</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <FaIcons.FaCaretDown />
+              </div>
+            </div>
 
             <Link
               to="/ServiceForm/"
