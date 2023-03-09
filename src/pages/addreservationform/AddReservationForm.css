@@ -1,0 +1,21 @@
+.bg-top {
+  background-image: linear-gradient(to right bottom, rgba(150, 191, 1, 0.8), rgba(150, 191, 1, 0.8)), url('../../images/hero2.jpg');
+}
+
+.button {
+  padding: 0 18px;
+  height: 40px;
+  letter-spacing: 0;
+  display: inline-block;
+  outline: none;
+  border: none;
+  border-radius: 3em;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
