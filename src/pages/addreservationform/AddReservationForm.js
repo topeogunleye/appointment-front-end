@@ -23,7 +23,7 @@ function AddReservationForm() {
           <div className="flex items-center justify-between m-auto w-80">
             <Link
               to="/CarRepairForm/"
-              className="button bg-green flex justify-center items-center justify-between w-36"
+              className="button bg-green flex justify-between items-center  w-36"
             >
               London
               <FaIcons.FaArrowDown className="inline" />
@@ -32,7 +32,7 @@ function AddReservationForm() {
             <Link
               to="/ServiceForm/"
               type="button"
-              className="button bg-white text-green text-center justify-between w-36"
+              className="button bg-white text-green flex justify-center items-center w-36"
             >
               Book Now
             </Link>
