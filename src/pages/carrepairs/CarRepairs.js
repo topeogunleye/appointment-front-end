@@ -56,7 +56,7 @@ const CarRepairs = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="border-2 border-black m-auto">
+      <div className="border-2 border-black m-auto w-3/5">
         <div className="w-full">
           <div>
             <h1>Services we render</h1>
@@ -72,7 +72,7 @@ const CarRepairs = () => {
             >
               {'<'}
             </button>
-            <div>
+            <div className="flex">
               {current_carousel.map((service) => (
                 <ServiceComponent key={service.id} service={service} />
               ))}
