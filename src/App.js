@@ -5,6 +5,7 @@ import RemoveReservationForm from './pages/removereservationForm/RemoveReservati
 import AddReservationForm from './pages/addreservationform/AddReservationForm';
 import Services from './pages/services/Services';
 import Reservations from './pages/reservations/Reservations';
+import ServiceForm from './pages/serviceform/ServiceForm';
 import './App.css';
 
 function App() {
@@ -49,6 +50,12 @@ function App() {
             path="/RemoveReservationForm"
             element={
               <RemoveReservationForm />
+            }
+          />
+          <Route
+            path="ServiceForm"
+            element={
+              <ServiceForm />
             }
           />
         </Routes>
