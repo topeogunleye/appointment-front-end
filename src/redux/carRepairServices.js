@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   services: [],
-  isLoading: false,
+  isLoading: true,
 };
 
 const SERVICES_URL = 'https://jsonplaceholder.typicode.com/comments';
