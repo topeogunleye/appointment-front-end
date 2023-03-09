@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import * as FaIcons from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import Image from '../../images/image.png';
@@ -44,8 +45,8 @@ export default function Sidebar() {
       </div>
       <nav ref={domNode} className={sidebar ? 'nav-menu active bg-white' : 'nav-menu'}>
         <ul className="nav-menu-items my-32">
-          {SidebarData.map((item, index) => (
-            <li key={index} className={item.cName}>
+          {SidebarData.map((item) => (
+            <li key={uuidv4()} className={item.cName}>
               <NavLink to={item.path}>
                 <span className="item-title">{item.title}</span>
               </NavLink>
