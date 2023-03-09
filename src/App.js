@@ -6,6 +6,7 @@ import AddReservationForm from './pages/addreservationform/AddReservationForm';
 import Services from './pages/services/Services';
 import Reservations from './pages/reservations/Reservations';
 import ServiceForm from './pages/serviceform/ServiceForm';
+import ServiceDetails from './pages/service_details/ServiceDetails';
 import './App.css';
 
 function App() {
@@ -15,49 +16,31 @@ function App() {
         <Routes className="flex">
           <Route
             path="/"
-            element={(
+            element={
               <div className="flex">
                 <Sidebar />
                 <div>This is the main index page for all of the services</div>
               </div>
-            )}
-          />
-          <Route
-            path="/CarRepairs"
-            element={
-              <CarRepairs />
             }
           />
+          <Route path="/CarRepairs" element={<CarRepairs />} />
+          <Route path="/services" element={<Services />} />
           <Route
-            path="/services"
+            path="/service_details"
             element={
-              <Services />
+              <>
+                <Sidebar />
+                <ServiceDetails />
+              </>
             }
           />
-          <Route
-            path="/reservations"
-            element={
-              <Reservations />
-            }
-          />
-          <Route
-            path="/AddReservationForm"
-            element={
-              <AddReservationForm />
-            }
-          />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/AddReservationForm" element={<AddReservationForm />} />
           <Route
             path="/RemoveReservationForm"
-            element={
-              <RemoveReservationForm />
-            }
+            element={<RemoveReservationForm />}
           />
-          <Route
-            path="ServiceForm"
-            element={
-              <ServiceForm />
-            }
-          />
+          <Route path="ServiceForm" element={<ServiceForm />} />
         </Routes>
       </BrowserRouter>
     </div>
