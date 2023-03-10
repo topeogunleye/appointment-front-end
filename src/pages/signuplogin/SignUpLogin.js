@@ -9,7 +9,7 @@ const Loginsignup = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:3000/auto_login', {
+      fetch('http://127.0.0.1:8000/auto_login', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -32,7 +32,7 @@ const Loginsignup = () => {
 
   const handleAuthClick = () => {
     const token = localStorage.getItem('token');
-    fetch('http://localhost:3000/user_is_authed', {
+    fetch('http://127.0.0.1:8000/user_is_authed', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

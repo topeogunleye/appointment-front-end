@@ -44,7 +44,7 @@ export default function Sidebar() {
         <img src={Image} alt="logo" className="w-16 h-16" />
         <NavLink
           to="/signup/"
-          className="button-primary signin-button mx-auto mb-12 mt-4 z-10"
+          className="button signin-button mx-auto mb-12 mt-4 bg-green z-10"
           id="nav-desktop-signin-button"
           title="Sign Up / Log in"
           aria-label="Sign Up / Log in"

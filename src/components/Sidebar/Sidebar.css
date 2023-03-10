@@ -18,6 +18,24 @@
   border-right: 1px solid #333;
 }
 
+.button {
+  padding: 0 18px;
+  height: 40px;
+  letter-spacing: 0;
+  outline: none;
+  border: none;
+  border-radius: 3em;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+
 @media screen and (min-width: 1024px) {
   .nav-menu {
     left: 0;

@@ -13,9 +13,10 @@ function LoginForm(props) {
     setPassword(evt.target.value);
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
+    console.log(typeof username, typeof password);
     evt.preventDefault();
-    fetch('http://localhost:3000/login', {
+    await fetch('http://127.0.0.1:8000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -28,6 +29,7 @@ function LoginForm(props) {
     })
       .then((resp) => resp.json())
       .then((data) => {
+        console.log(data);
         localStorage.setItem('token', data.jwt);
         props.handleLogin(data.user);
       });
@@ -45,8 +47,8 @@ function LoginForm(props) {
             <input 
               id="username"
               value={username} 
-              onChange={handleUsernameChange} 
-              type="text" 
+              onChange={handleUsernameChange}
+              type="text"
               placeholder="username"
               className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             />
