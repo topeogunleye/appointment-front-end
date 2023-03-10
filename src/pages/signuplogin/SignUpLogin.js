@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import LoginForm from '../loginform/LoginForm';
 import SignInForm from '../signinform/SignInForm';
 
 const Loginsignup = () => {
   const [user, setUser] = useState({});
   const [form, setForm] = useState('');
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     fetch('http://127.0.0.1:8000/auto_login', {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //       .then((resp) => resp.json())
-  //       .then((data) => {
-  //         setUser(data);
-  //       // console.log(data)
-  //       });
-  //   }
-  // }, []);
+  const selector = useSelector((state) => state.auth.token);
+  console.log('Selector: ', selector);
 
   const handleLogin = (user) => {
     setUser(user);
@@ -31,18 +18,19 @@ const Loginsignup = () => {
   };
 
   const handleAuthClick = () => {
-    const token = localStorage.getItem('token');
-    console.log(token)
+    const token = `${selector}`;
+    console.log('token: ', token);
+    console.log('type of token: ', typeof token);
     fetch('http://127.0.0.1:8000/user_is_authed', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log('data: ', data));
   };
 
-  console.log(user);
+  console.log('user :', user);
 
   const renderForm = () => {
     switch (form) {
