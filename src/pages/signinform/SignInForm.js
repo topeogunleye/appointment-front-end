@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signup } from '../../redux/auth/authSlice';
 
-function SignInForm(props) {
+function SignUpForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleUsernameChange = (evt) => {
     setUsername(evt.target.value);
@@ -13,23 +16,14 @@ function SignInForm(props) {
   };
 
   const handleSubmit = (evt) => {
-    console.log(username, password)
     evt.preventDefault();
-    fetch('http://127.0.0.1:8000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        localStorage.setItem('token', data.jwt);
-        props.handleLogin(data.user);
+    dispatch(signup({ username, password }))
+      .then((result) => {
+        if (result.payload) {
+          // successful sign up, handle user data
+        } else {
+          // failed sign up, handle error
+        }
       });
     setUsername('');
     setPassword('');
@@ -61,11 +55,11 @@ function SignInForm(props) {
         </div>
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
-          Submit
+          Sign Up
         </button>
       </form>
     </div>
   );
 }
 
-export default SignInForm;
+export default SignUpForm;
