@@ -1,7 +1,12 @@
 const SidebarData = [
   {
-    title: 'Car Repairs',
+    title: 'Services',
     path: '/CarRepairs/',
+    cName: 'nav-text',
+  },
+  {
+    title: 'Reserve',
+    path: '/AddReservationForm/',
     cName: 'nav-text',
   },
   {

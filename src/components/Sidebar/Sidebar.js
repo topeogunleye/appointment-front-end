@@ -41,7 +41,7 @@ export default function Sidebar() {
         <FaIcons.FaBars onClick={showSidebar} />
       </button>
       <div className="grid items-center w-full">
-        <img src={Image} alt="logo" className="w-10 h-10" />
+        <img src={Image} alt="logo" className="w-16 h-16" />
       </div>
       <nav ref={domNode} className={sidebar ? 'nav-menu active bg-white' : 'nav-menu'}>
         <ul className="nav-menu-items my-32">
