@@ -5,8 +5,14 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { fetchServices } from '../../redux/carRepairServices';
 import ServiceComponent from '../../components/ServiceComponent';
 
-const CarRepairs = () => {
+const CarRepairs = (props) => {
   const dispatch = useDispatch();
+  // const [currentService, setCurrentService] = useSelector();
+  const { handleServiceClick } = props;
+
+  const focusedService = (data) => {
+    handleServiceClick(data);
+  };
 
   useEffect(() => {
     dispatch(fetchServices());
@@ -74,7 +80,11 @@ const CarRepairs = () => {
             </button>
             <div className="flex">
               {current_carousel.map((service) => (
-                <ServiceComponent key={service.id} service={service} />
+                <ServiceComponent
+                  key={service.id}
+                  service={service}
+                  focusedService={focusedService}
+                />
               ))}
             </div>
             <button
