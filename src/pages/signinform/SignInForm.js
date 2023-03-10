@@ -33,26 +33,35 @@ function SignInForm(props) {
     setUsername('');
     setPassword('');
   };
-  const formDivStyle = {
-    margin: 'auto',
-    padding: '20px',
-    width: '80%',
-  };
 
   return (
-    <div style={formDivStyle}>
-      <h1>Sign Up</h1>
+    <div className="mx-auto p-8 w-80">
+      <h1 className="text-xl font-bold mb-4">Sign Up</h1>
       <form className="ui form" onSubmit={handleSubmit}>
-        <div className="field">
-          <label>Username</label>
-          <input value={username} onChange={handleUsernameChange} type="text" placeholder="username" />
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2">Username</label>
+          <input
+            value={username}
+            onChange={handleUsernameChange}
+            type="text"
+            placeholder="username"
+            className="border border-gray-400 p-2 w-full rounded-lg"
+          />
         </div>
-        <div className="field">
-          <label>Password</label>
-          <input value={password} onChange={handlePasswordChange} type="password" placeholder="password" />
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2">Password</label>
+          <input
+            value={password}
+            onChange={handlePasswordChange}
+            type="password"
+            placeholder="password"
+            className="border border-gray-400 p-2 w-full rounded-lg"
+          />
         </div>
 
-        <button className="ui button" type="submit">Submit</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
