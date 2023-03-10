@@ -23,12 +23,12 @@ function App() {
         <Routes className="flex">
           <Route
             path="/"
-            element={
+            element={(
               <div className="flex">
                 <Sidebar />
                 <div>This is the main index page for all of the services</div>
               </div>
-            }
+            )}
           />
           <Route
             path="/CarRepairs"
@@ -37,12 +37,12 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route
             path="/service_details"
-            element={
+            element={(
               <>
                 <Sidebar />
                 <ServiceDetails details={serviceDetailsData} />
               </>
-            }
+            )}
           />
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/AddReservationForm" element={<AddReservationForm />} />

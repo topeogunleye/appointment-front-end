@@ -8,7 +8,8 @@ function ServiceDetails(props) {
     <div className="border-2 border-black w-1/2 mx-auto">
       <div>
         <div>
-          This will hold the image of the service but for now lets render email:{' '}
+          This will hold the image of the service but for now lets render email:
+          {' '}
           {email}
         </div>
         <button>{'<'}</button>

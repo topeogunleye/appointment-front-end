@@ -23,7 +23,7 @@ const CarRepairs = (props) => {
 
   const [index, setIndex] = useState(0);
   // const length = 500;
-  const length = services.services.length;
+  const { length } = services.services;
 
   const handlePrevious = () => {
     const newIndex = index - 1;
