@@ -8,8 +8,15 @@ import Reservations from './pages/reservations/Reservations';
 import ServiceForm from './pages/serviceform/ServiceForm';
 import ServiceDetails from './pages/service_details/ServiceDetails';
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [serviceDetailsData, setServiceDetailsData] = useState({});
+
+  const handleServiceClick = (data) => {
+    setServiceDetailsData(data);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,14 +30,17 @@ function App() {
               </div>
             }
           />
-          <Route path="/CarRepairs" element={<CarRepairs />} />
+          <Route
+            path="/CarRepairs"
+            element={<CarRepairs handleServiceClick={handleServiceClick} />}
+          />
           <Route path="/services" element={<Services />} />
           <Route
             path="/service_details"
             element={
               <>
                 <Sidebar />
-                <ServiceDetails />
+                <ServiceDetails details={serviceDetailsData} />
               </>
             }
           />
