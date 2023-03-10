@@ -18,9 +18,8 @@ const Loginsignup = () => {
   };
 
   const handleAuthClick = () => {
-    const token = `${selector}`;
+    const token = selector;
     console.log('token: ', token);
-    console.log('type of token: ', typeof token);
     fetch('http://127.0.0.1:8000/user_is_authed', {
       headers: {
         Authorization: `Bearer ${token}`,
