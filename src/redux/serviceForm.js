@@ -12,7 +12,7 @@ export const postServices = createAsyncThunk('POST_SERVICES', async (data) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      Accept: 'application/json',
     },
     body: JSON.stringify(data),
   });
