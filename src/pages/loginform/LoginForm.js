@@ -14,13 +14,12 @@ function LoginForm(props) {
   };
 
   const handleSubmit = async (evt) => {
-    console.log(typeof username, typeof password);
     evt.preventDefault();
-    await fetch('http://127.0.0.1:8000/login', {
+    await fetch('http://[::1]:8000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify({
         username,
@@ -30,11 +29,11 @@ function LoginForm(props) {
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data);
-        localStorage.setItem('token', data.jwt);
-        props.handleLogin(data.user);
+        // localStorage.setItem('token', data.jwt);
+        // props.handleLogin(data.user);
       });
-    setUsername('');
-    setPassword('');
+    // setUsername('');
+    // setPassword('');
   };
 
   return (

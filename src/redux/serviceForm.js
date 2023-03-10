@@ -5,18 +5,18 @@ const initialState = {
   isLoading: false,
 };
 
-const SERVICES_URL = 'https://jsonplaceholder.typicode.com/posts';
+const SERVICES_URL = 'http://[::1]:8000/reservation';
 
 export const postServices = createAsyncThunk('POST_SERVICES', async (data) => {
   const req = await fetch(SERVICES_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json'
     },
     body: JSON.stringify(data),
   });
   const res = await req.json();
-  console.log(res);
   return res;
 });
 
