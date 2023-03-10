@@ -7,6 +7,7 @@ import Services from './pages/services/Services';
 import Reservations from './pages/reservations/Reservations';
 import ServiceForm from './pages/serviceform/ServiceForm';
 import './App.css';
+import Loginsignup from './pages/signuplogin/SignUpLogin';
 
 function App() {
   return (
@@ -56,6 +57,12 @@ function App() {
             path="ServiceForm"
             element={
               <ServiceForm />
+            }
+          />
+          <Route
+            path="signup"
+            element={
+              <Loginsignup />
             }
           />
         </Routes>

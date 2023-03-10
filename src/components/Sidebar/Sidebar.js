@@ -42,6 +42,15 @@ export default function Sidebar() {
       </button>
       <div className="grid items-center w-full">
         <img src={Image} alt="logo" className="w-16 h-16" />
+        <NavLink
+          to="/signup/"
+          className="button-primary signin-button mx-auto mb-12 mt-4 z-10"
+          id="nav-desktop-signin-button"
+          title="Sign Up / Log in"
+          aria-label="Sign Up / Log in"
+        >
+          Sign Up / Log In
+        </NavLink>
       </div>
       <nav ref={domNode} className={sidebar ? 'nav-menu active bg-white' : 'nav-menu'}>
         <ul className="nav-menu-items my-32">
