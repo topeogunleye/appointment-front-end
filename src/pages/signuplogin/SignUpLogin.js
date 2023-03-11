@@ -35,7 +35,6 @@ const Loginsignup = () => {
     switch (form) {
       case 'login':
         return <LoginForm handleLogin={handleLogin} />;
-        break;
       default:
         return <SignInForm handleLogin={handleLogin} />;
     }
