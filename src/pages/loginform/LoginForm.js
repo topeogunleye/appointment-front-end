@@ -37,28 +37,28 @@ function LoginForm({ handleLogin }) {
           <div className="mb-4">
             <label htmlFor="username" className="block font-bold mb-2">
               Username
+              <input
+                id="username"
+                value={username}
+                onChange={handleUsernameChange}
+                type="text"
+                placeholder="username"
+                className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              />
             </label>
-            <input
-              id="username"
-              value={username}
-              onChange={handleUsernameChange}
-              type="text"
-              placeholder="username"
-              className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-            />
           </div>
           <div className="mb-4">
             <label htmlFor="password" className="block font-bold mb-2">
               Password
+              <input
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+                type="password"
+                placeholder="password"
+                className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              />
             </label>
-            <input
-              id="password"
-              value={password}
-              onChange={handlePasswordChange}
-              type="password"
-              placeholder="password"
-              className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-            />
           </div>
           <div className="flex flex-col justify-between items-center">
             <button
