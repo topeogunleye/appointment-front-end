@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './CarRepair.css';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { fetchServices } from '../../redux/carRepairServices';
 import ServiceComponent from '../../components/ServiceComponent';
@@ -16,7 +17,7 @@ const CarRepairs = (props) => {
 
   useEffect(() => {
     dispatch(fetchServices());
-  }, []);
+  }, [dispatch]);
 
   const services = useSelector((state) => state.services);
   console.log(services.services);
@@ -35,28 +36,34 @@ const CarRepairs = (props) => {
     setIndex(newIndex >= length ? 0 : newIndex);
   };
 
-  const current_carousel = [];
+  const currentCarousel = [];
   if (!services.isLoading) {
-    const carousel_first = services.services[index];
-    let carousel_second;
-    let carousel_third;
+    const carouselFirst = services.services[index];
+    let carouselSecond;
+    let carouselThird;
 
-    if (index == length - 1) {
-      carousel_second = services.services[0];
-      carousel_third = services.services[1];
-    } else if (index + 1 == length - 1) {
-      carousel_second = services.services[index + 1];
-      carousel_third = services.services[0];
+    if (index === length - 1) {
+      [carouselSecond, carouselThird] = [
+        services.services[0],
+        services.services[1],
+      ];
+    } else if (index + 1 === length - 1) {
+      [carouselSecond, carouselThird] = [
+        services.services[index + 1],
+        services.services[0],
+      ];
     } else {
-      carousel_second = services.services[index + 1];
-      carousel_third = services.services[index + 2];
+      [carouselSecond, carouselThird] = [
+        services.services[index + 1],
+        services.services[index + 2],
+      ];
     }
 
-    current_carousel.push(carousel_first);
-    current_carousel.push(carousel_second);
-    current_carousel.push(carousel_third);
+    currentCarousel.push(carouselFirst);
+    currentCarousel.push(carouselSecond);
+    currentCarousel.push(carouselThird);
 
-    console.log(current_carousel);
+    console.log(currentCarousel);
   }
 
   return (
@@ -79,7 +86,7 @@ const CarRepairs = (props) => {
               {'<'}
             </button>
             <div className="flex">
-              {current_carousel.map((service) => (
+              {currentCarousel.map((service) => (
                 <ServiceComponent
                   key={service.id}
                   service={service}
@@ -99,6 +106,10 @@ const CarRepairs = (props) => {
       </div>
     </div>
   );
+};
+
+CarRepairs.propTypes = {
+  handleServiceClick: PropTypes.func.isRequired,
 };
 
 export default CarRepairs;
