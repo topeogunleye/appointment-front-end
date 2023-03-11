@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
 import CarRepairs from './pages/carrepairs/CarRepairs';
@@ -8,7 +9,6 @@ import Reservations from './pages/reservations/Reservations';
 import ServiceForm from './pages/serviceform/ServiceForm';
 import ServiceDetails from './pages/service_details/ServiceDetails';
 import './App.css';
-import React, { useState } from 'react';
 
 function App() {
   const [serviceDetailsData, setServiceDetailsData] = useState({});
