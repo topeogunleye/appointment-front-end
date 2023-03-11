@@ -34,24 +34,30 @@ function SignUpForm() {
       <h1 className="text-xl font-bold mb-4">Sign Up</h1>
       <form className="ui form" onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">Username</label>
-          <input
-            value={username}
-            onChange={handleUsernameChange}
-            type="text"
-            placeholder="username"
-            className="border border-gray-400 p-2 w-full rounded-lg"
-          />
+          <label htmlFor="username-input" className="block text-gray-700 font-bold mb-2">
+            Username
+            <input
+              id="username-input"
+              value={username}
+              onChange={handleUsernameChange}
+              type="text"
+              placeholder="username"
+              className="border border-gray-400 p-2 w-full rounded-lg"
+            />
+          </label>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">Password</label>
-          <input
-            value={password}
-            onChange={handlePasswordChange}
-            type="password"
-            placeholder="password"
-            className="border border-gray-400 p-2 w-full rounded-lg"
-          />
+          <label htmlFor="password-input" className="block text-gray-700 font-bold mb-2">
+            Password
+            <input
+              id="password-input"
+              value={password}
+              onChange={handlePasswordChange}
+              type="password"
+              placeholder="password"
+              className="border border-gray-400 p-2 w-full rounded-lg"
+            />
+          </label>
         </div>
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
