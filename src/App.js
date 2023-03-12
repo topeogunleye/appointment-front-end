@@ -60,7 +60,7 @@ function App() {
             }
           />
           <Route
-            path="signup"
+            path="loginsignup"
             element={
               <Loginsignup />
             }
