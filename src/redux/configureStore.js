@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import servicesSlice from './carRepairServices';
-import reservationSlice from './serviceForm';
+import reservationSlice from './reservationSlice';
 import authSlice from './auth/authSlice';
 
 const rootReducer = combineReducers({
