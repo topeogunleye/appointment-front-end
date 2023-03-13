@@ -5,9 +5,10 @@ const initialState = {
   isLoading: false,
 };
 
-const API_URL = 'http://localhost:8000/services';
+const API_URL = 'http://[::1]:8000/services';
 
 export const postService = createAsyncThunk('postService', async (data) => {
+  console.log(data)
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {

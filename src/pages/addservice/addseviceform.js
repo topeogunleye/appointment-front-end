@@ -18,16 +18,9 @@ const ServiceForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('service', service);
-    formData.append('photo', photo);
-    formData.append('engineer', engineer);
-    formData.append('price', price);
-    formData.append('labour', labour);
-    formData.append('duration', duration);
-    formData.append('description', description);
-
-    dispatch(postService(formData));
+    dispatch(postService({
+      service, photo, engineer, price, labour, duration, description
+    }));
 
     setService('');
     setPhoto(null);
