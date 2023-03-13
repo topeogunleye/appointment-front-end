@@ -33,7 +33,7 @@ export default function Sidebar() {
   const dispatch = useDispatch();
 
   const handleSignIn = async () => {
-    const credentials = { username: 'User', password: 'secret' }; // replace with your own login form data
+    const credentials = { username: 'admin', password: 'admin' }; // replace with your own login form data
     await dispatch(login(credentials));
   };
 
@@ -70,6 +70,24 @@ export default function Sidebar() {
                   <img src={logo} alt="logo" className="w-20" />
                 </div>
               </NavLink>
+            </div>
+            <div>
+              {user ? (
+                <div className="mx-auto my-auto cursor-pointer flex justify-between items-center w-16">
+                  <FaIcons.FaRegUserCircle />
+                  <div>{user && user.username}</div>
+                </div>
+              ) : (
+                <NavLink
+                  to="/loginsignup/"
+                  className="button signin-button mx-auto"
+                  id="nav-desktop-signin-button"
+                  title="Sign Up / Log in"
+                  aria-label="Sign Up / Log in"
+                >
+                  Sign Up / Log In
+                </NavLink>
+              )}
             </div>
           </div>
           {SidebarData.map((item) => (

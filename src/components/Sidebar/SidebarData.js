@@ -15,12 +15,12 @@ const SidebarData = [
     cName: 'nav-text',
   },
   {
-    title: 'Add Resevation',
-    path: '/AddReservationForm/',
+    title: 'Add Service',
+    path: '/AddService/',
     cName: 'nav-text',
   },
   {
-    title: 'Remove Resevation',
+    title: 'Remove Service',
     path: '/RemoveReservationForm/',
     cName: 'nav-text',
   },

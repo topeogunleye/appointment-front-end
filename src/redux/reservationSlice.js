@@ -17,7 +17,9 @@ export const postServices = createAsyncThunk('POST_SERVICES', async (data) => {
     body: JSON.stringify(data),
   });
   const res = await req.json();
-  return res;
+  const result = await res.data();
+  console.log('result: ', result);
+  return result;
 });
 
 const reservationSlice = createSlice({

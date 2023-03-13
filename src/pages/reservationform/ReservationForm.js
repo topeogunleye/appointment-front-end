@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postServices } from '../../redux/reservationSlice';
 
-const ServiceForm = () => {
+const ReservationForm = () => {
   const dispatch = useDispatch();
   const [vehicle, setVehicle] = useState('');
   const [model, setModel] = useState('');
@@ -12,6 +12,14 @@ const ServiceForm = () => {
   const [service, setService] = useState('');
   const isLoading = useSelector((state) => state.isLoading);
   const userId = useSelector((state) => state.auth.user.id);
+
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     dispatch(postServices({
+  //       vehicle, model, year, color, location, service, userId,
+  //     }));
+  //   }
+  // }, [isLoading]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -130,4 +138,4 @@ const ServiceForm = () => {
   );
 };
 
-export default ServiceForm;
+export default ReservationForm;

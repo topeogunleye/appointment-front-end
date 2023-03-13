@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/authSlice';
 
@@ -8,6 +9,7 @@ function LoginForm({ handleLogin }) {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const handleUsernameChange = (evt) => {
     setUsername(evt.target.value);
@@ -23,6 +25,9 @@ function LoginForm({ handleLogin }) {
       if (result.payload) {
         localStorage.setItem('token', result.payload.jwt);
         handleLogin(result.payload.user);
+        if (status === 'succeeded') {
+          navigate('/');
+        }
       }
     });
   };

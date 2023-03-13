@@ -5,9 +5,10 @@ import RemoveReservationForm from './pages/removereservationForm/RemoveReservati
 import AddReservationForm from './pages/addreservationform/AddReservationForm';
 import Services from './pages/services/Services';
 import Reservations from './pages/reservations/Reservations';
-import ServiceForm from './pages/serviceform/ServiceForm';
 import './App.css';
 import Loginsignup from './pages/signuplogin/SignUpLogin';
+import ReservationForm from './pages/reservationform/ReservationForm';
+import ServicesForm from './pages/addservice/addseviceform';
 
 function App() {
   return (
@@ -54,15 +55,27 @@ function App() {
             }
           />
           <Route
-            path="ServiceForm"
+            path="/ReservationForm"
             element={
-              <ServiceForm />
+              <ReservationForm />
             }
           />
           <Route
             path="loginsignup"
             element={
               <Loginsignup />
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <div>404 Not Found</div>
+            }
+          />
+          <Route
+            path="/AddService"
+            element={
+              <ServicesForm />
             }
           />
         </Routes>
