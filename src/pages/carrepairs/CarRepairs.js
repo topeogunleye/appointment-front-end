@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './CarRepair.css';
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import ServiceComponent from '../../components/ServiceComponent';
 import { fetchServices } from '../../redux/carRepairServices';
 import Carousel from '../../components/Carousel/Carousel';
 
@@ -69,15 +67,9 @@ const CarRepairs = () => {
     },
   ];
 
-  const { handleServiceClick } = props;
-
-  const focusedService = (data) => {
-    handleServiceClick(data);
-  };
-
   useEffect(() => {
     dispatch(fetchServices());
-  }, [dispatch]);
+  }, []);
 
   const services = useSelector((state) => state.services);
   console.log(services.services);
@@ -85,6 +77,7 @@ const CarRepairs = () => {
   const [index, setIndex] = useState(0);
   // const length = 500;
   const { length } = services.services;
+  console.log(length);
 
   const handlePrevious = () => {
     const newIndex = index - 1;
@@ -95,36 +88,6 @@ const CarRepairs = () => {
     const newIndex = index + 1;
     setIndex(newIndex >= length ? 0 : newIndex);
   };
-
-  const currentCarousel = [];
-  if (!services.isLoading) {
-    const carouselFirst = services.services[index];
-    let carouselSecond;
-    let carouselThird;
-
-    if (index === length - 1) {
-      [carouselSecond, carouselThird] = [
-        services.services[0],
-        services.services[1],
-      ];
-    } else if (index + 1 === length - 1) {
-      [carouselSecond, carouselThird] = [
-        services.services[index + 1],
-        services.services[0],
-      ];
-    } else {
-      [carouselSecond, carouselThird] = [
-        services.services[index + 1],
-        services.services[index + 2],
-      ];
-    }
-
-    currentCarousel.push(carouselFirst);
-    currentCarousel.push(carouselSecond);
-    currentCarousel.push(carouselThird);
-
-    console.log(currentCarousel);
-  }
 
   return (
     <div className="grid grid-cols-custom">
