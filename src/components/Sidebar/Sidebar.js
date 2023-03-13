@@ -90,9 +90,9 @@ export default function Sidebar() {
         <div className="dev-info transition-all duration-1000 ease-out">
           <div className="text-center my-6">
             {user ? (
-              <button type="button" onClick={handleSignOut}>Sign Out</button>
+              <button type="button" className="bg-gray-500 text-white w-24 py-1.5 px-1 rounded-full" onClick={handleSignOut}>Sign Out</button>
             ) : (
-              <button type="button" onClick={handleSignIn}>Sign In</button>
+              <button type="button" onClick={handleSignIn} className="bg-green text-white w-24 py-1.5 px-1 rounded-full">Sign In</button>
               // <NavLink className="option" to="/loginsignup/">
               //   SIGN IN
               // </NavLink>
