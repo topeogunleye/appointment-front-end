@@ -18,18 +18,20 @@ const Carousel = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrevClick = () => {
-    setCurrentImageIndex((currentImageIndex - 1 + services.services.length)
-    % services.services.length);
+    const newStartIndex = (currentImageIndex - 3 + services.services.length)
+     % services.services.length;
+    setCurrentImageIndex(newStartIndex);
   };
 
   const handleNextClick = () => {
-    setCurrentImageIndex((currentImageIndex + 1) % services.services.length);
+    const newStartIndex = (currentImageIndex + 3) % services.services.length;
+    setCurrentImageIndex(newStartIndex);
   };
 
   return (
     <div className="carousel my-5">
       <div className="carousel-container">
-        {services.services.slice(currentImageIndex, currentImageIndex + 3).map((service) => (
+        {[...services.services, ...services.services, ...services.services].slice(currentImageIndex, currentImageIndex + 3).map((service) => (
           <div className="carousel-item" key={service.id}>
             <img src={service.photo} alt={service.service} className="carousel-image" />
             <div className="p-4 text-gray-500">
