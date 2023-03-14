@@ -1,54 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
 import { IconContext } from 'react-icons';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Carousel.css';
+import { fetchServices } from '../../redux/carRepairServices';
 
-const Carousel = ({ images }) => {
+const Carousel = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchServices());
+  }, []);
+
+  const services = useSelector((state) => state.services);
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrevClick = () => {
-    setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length);
+    setCurrentImageIndex((currentImageIndex - 1 + services.services.length)
+    % services.services.length);
   };
 
   const handleNextClick = () => {
-    setCurrentImageIndex((currentImageIndex + 1) % images.length);
+    setCurrentImageIndex((currentImageIndex + 1) % services.services.length);
   };
 
   return (
     <div className="carousel my-5">
       <div className="carousel-container">
-        {images.slice(currentImageIndex, currentImageIndex + 3).map((image, index) => (
-          <div className="carousel-item" key={index}>
-            <img src={image.src} alt={image.alt} className="carousel-image" />
+        {services.services.slice(currentImageIndex, currentImageIndex + 3).map((service) => (
+          <div className="carousel-item" key={service.id}>
+            <img src={service.photo} alt={service.service} className="carousel-image" />
             <div className="p-4 text-gray-500">
-              <h3 className="text-xl font-semibold mb-2 border-b border-dashed border-indigo-600 leading-[2]">{image.title}</h3>
-              <p className="mb-4 text-sm font-normal w-60">{image.description}</p>
-              <div className="flex items-center justify-center">
-                <a
-                  href={`https://facebook.com/${image.facebook}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-600 mr-4 hover:text-blue-500"
-                >
+              <h3 className="text-xl font-semibold mb-2 border-b border-dashed border-indigo-600 leading-[2]">{service.service}</h3>
+              <p className="mb-4 text-sm font-normal w-60">{service.description}</p>
+              <div className="flex items-center justify-center w-64">
+                <IconContext.Provider value={{ color: 'gray', className: 'text-gray-600 mr-4 hover:text-blue-500' }}>
                   <FaFacebook size={24} />
-                </a>
-                <a
-                  href={`https://twitter.com/${image.twitter}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-600 mr-4 hover:text-blue-500"
-                >
+                </IconContext.Provider>
+                <IconContext.Provider value={{ color: 'gray', className: 'text-gray-600 mr-4 hover:text-blue-500' }}>
                   <FaTwitter size={24} />
-                </a>
-                <a
-                  href={`https://instagram.com/${image.instagram}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-600 hover:text-pink-500"
-                >
+                </IconContext.Provider>
+                <IconContext.Provider value={{ color: 'gray', className: 'text-gray-600 mr-4 hover:text-blue-500' }}>
                   <FaInstagram size={24} />
-                </a>
+                </IconContext.Provider>
               </div>
             </div>
           </div>
