@@ -1,13 +1,39 @@
-import React from 'react';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchServices } from '../../redux/reservationSlice';
 
-function Reservations() {
+const Reservations = () => {
+  const dispatch = useDispatch();
+  const formData = useSelector((state) => state.reservation.formData);
+  console.log(formData);
+  const isLoading = useSelector((state) => state.isLoading);
+
+  useEffect(() => {
+    dispatch(fetchServices());
+  }, [dispatch]);
+
   return (
-    <div className="flex">
-      <Sidebar />
-      <h1 className="m-auto pl-32">This is the page that shows all the reservations you have created as a user</h1>
+    <div className="container mx-auto mt-8">
+      <h1 className="text-3xl font-bold mb-8">Reservations</h1>
+      {isLoading ? (
+        <div className="text-center">
+          <span className="text-gray-500">Loading...</span>
+        </div>
+      ) : (
+        <table className="table-auto w-full">
+          <thead>
+            <tr>
+              <th className="px-4 py-2 text-left">ID</th>
+              <th className="px-4 py-2 text-left">Service</th>
+              <th className="px-4 py-2 text-left">Created At</th>
+              <th className="px-4 py-2 text-left">Updated At</th>
+            </tr>
+          </thead>
+
+        </table>
+      )}
     </div>
   );
-}
+};
 
 export default Reservations;
