@@ -35,7 +35,7 @@ function AddReservationForm() {
             </div>
 
             <Link
-              to="/ServiceForm/"
+              to="/ReservationForm/"
               type="button"
               className="button bg-white text-green flex justify-center items-center w-36"
             >

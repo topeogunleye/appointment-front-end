@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { postServices } from '../../redux/serviceForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { postServices } from '../../redux/reservationSlice';
 
-const ServiceForm = () => {
+const ReservationForm = () => {
   const dispatch = useDispatch();
   const [vehicle, setVehicle] = useState('');
   const [model, setModel] = useState('');
@@ -10,12 +10,22 @@ const ServiceForm = () => {
   const [color, setColor] = useState('');
   const [location, setLocation] = useState('');
   const [service, setService] = useState('');
+  const isLoading = useSelector((state) => state.isLoading);
+  const userId = useSelector((state) => state.auth.user.id);
+
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     dispatch(postServices({
+  //       vehicle, model, year, color, location, service, userId,
+  //     }));
+  //   }
+  // }, [isLoading]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
     dispatch(postServices({
-      vehicle, model, year, color, location, service,
+      vehicle, model, year, color, location, service, userId,
     }));
   };
 
@@ -120,7 +130,7 @@ const ServiceForm = () => {
             type="submit"
             className="w-full px-4 py-2 text-white bg-green rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
           >
-            Submit
+            {isLoading ? 'Loading...' : 'Submit'}
           </button>
         </div>
       </form>
@@ -128,4 +138,4 @@ const ServiceForm = () => {
   );
 };
 
-export default ServiceForm;
+export default ReservationForm;

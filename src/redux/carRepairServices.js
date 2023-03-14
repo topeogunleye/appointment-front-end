@@ -5,7 +5,7 @@ const initialState = {
   isLoading: false,
 };
 
-const SERVICES_URL = 'https://jsonplaceholder.typicode.com/comments';
+const SERVICES_URL = 'http://[::1]:8000/services';
 
 export const fetchServices = createAsyncThunk('GET_SERVICES', async () => {
   const req = await fetch(SERVICES_URL);
