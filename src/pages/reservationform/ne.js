@@ -1,16 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; // import useNavigate
 import DatePicker from 'react-multi-date-picker';
 import InputIcon from 'react-multi-date-picker/components/input_icon';
+// import DatePicker from 'react-datepicker';
 import { postServices } from '../../redux/reservationSlice';
-import { handleOptionChange } from '../../redux/selectDropdownSlice';
 import './ReservationForm.css';
 
 const ReservationForm = () => {
+  
+const handleOptionChange = (selectedOption) => (dispatch) => {
+  dispatch(setSelectedOption(selectedOption));
+};
+  // const [selectedOption, setSelectedOption] = useState('New York');
+
+  // function handleOptionChange(event) {
+  //   setSelectedOption(event.target.value);
+  // }
   const selectedOption = useSelector((state) => state.selectDropdown.selectedOption);
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // initialize useNavigate
+
   const [vehicle, setVehicle] = useState('');
   const [model, setModel] = useState('');
   const [year, setYear] = useState('');
@@ -20,8 +28,8 @@ const ReservationForm = () => {
   const [startDate, setStartDate] = useState(new Date());
 
   const isLoading = useSelector((state) => state.isLoading);
-  const userId = useSelector((state) => (state.auth.user ? state.auth.user.id : null));
-  const userName = useSelector((state) => (state.auth.user ? state.auth.user.username : null));
+  const userId = useSelector((state) => state.auth.user.id);
+  const userName = useSelector((state) => state.auth.user.username);
 
   // Watch for changes to the selectedOption state value, and update location accordingly
   useEffect(() => {
@@ -30,37 +38,18 @@ const ReservationForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const payload = {
-      startDate,
-      vehicle,
-      model,
-      year,
-      color,
-      location,
-      service,
-      userId,
-      userName,
-    };
-    dispatch(postServices(payload));
+    // Handle form submission logic here
+    dispatch(postServices({
+      startDate, vehicle, model, year, color, location, service, userId,
+    }));
   };
-
-  const handleDateChange = (selectedDate) => {
-    setStartDate(selectedDate); // update startDate variable with selected date
-  };
-
-  // Check if the user is logged in, and redirect to login page if not
-  useEffect(() => {
-    if (!userId) {
-      navigate('/loginsignup');
-    }
-  }, [userId, navigate]);
 
   return (
     <div className="">
       <form onSubmit={handleFormSubmit} className="max-w-lg mx-auto p-8">
-        <label htmlFor="username" className="block font-medium mb-2 flex items-center justify-center">
+        <label htmlFor="username" className="block font-medium mb-2">
           Name:
-          <input type="text" value={userName || ''} disabled />
+          <input type="text" value={userName} disabled />
         </label>
 
         <div className="mb-4">
@@ -68,9 +57,10 @@ const ReservationForm = () => {
             <label htmlFor="datepicker" className="block font-medium mb-2">
               Select Date:
             </label>
-            <DatePicker id="datepicker" value={startDate} onChange={handleDateChange} render={<InputIcon />} />
+            <DatePicker
+              render={<InputIcon />}
+            />
           </div>
-
         </div>
         {/* please */}
         <div className="mb-4">
@@ -133,11 +123,7 @@ const ReservationForm = () => {
         <div className="mb-4">
           <label htmlFor="location" className="block font-medium mb-2">
             Location
-            <select
-              value={selectedOption}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-              onChange={(e) => dispatch(handleOptionChange(e.target.value))}
-            >
+            <select value={selectedOption} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" onChange={(e) => dispatch(handleOptionChange(e.target.value))}>
               <option>New York</option>
               <option>Los Angeles</option>
               <option>Chicago</option>
@@ -178,3 +164,6 @@ const ReservationForm = () => {
 };
 
 export default ReservationForm;
+
+const [startDate, setStartDate] = useState(new Date());
+<DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />

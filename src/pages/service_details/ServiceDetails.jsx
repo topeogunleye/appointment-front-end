@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ServiceDetails.css';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import { fetchServiceById } from '../../redux/serviceSlice';
 
-function ServiceDetails(props) {
+function ServiceDetails() {
   const navigate = useNavigate();
-  console.log(props);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const service = useSelector((state) => state.services.services[0]);
+
+  useEffect(() => {
+    dispatch(fetchServiceById(id));
+  }, [dispatch, id]);
+
+  if (!service) {
+    return <div>Loading...</div>;
+  }
 
   const {
-    service, photo, engineer, price, labour, duration, description,
-  } = props.details;
-
-  console.log(photo);
+    photo, engineer, price, labour, duration, description,
+  } = service;
 
   return (
     <div className="grid grid-cols-custom">
@@ -30,15 +40,13 @@ function ServiceDetails(props) {
               navigate('/CarRepairs');
             }}
           >
-            <IconContext.Provider
-              value={{ color: '#ffffff', className: 'global-class-name' }}
-            >
+            <IconContext.Provider value={{ color: '#ffffff', className: 'global-class-name' }}>
               <FaIcons.FaCaretLeft />
             </IconContext.Provider>
           </button>
         </div>
         <div className="mx-auto flex flex-col pt-4 gap-y-5">
-          <h1 className="self-end text-xl font-bold">{service}</h1>
+          <h1 className="self-end text-xl font-bold">{service.service}</h1>
           <p className="self-end">50% deposit</p>
           <table>
             <tbody>
@@ -72,10 +80,10 @@ function ServiceDetails(props) {
             type="button"
             className="bg-green text-white w-24 py-1.5 px-1 rounded-full self-end"
             onClick={() => {
-              navigate('/AddReservationForm');
+              navigate('/AddService');
             }}
           >
-            Book
+            Edit
           </button>
         </div>
       </div>

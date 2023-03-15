@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { IconContext } from 'react-icons';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Carousel.css';
 import './CarouselResponsive.css';
-import { useNavigate } from 'react-router-dom';
 import { fetchServices } from '../../redux/carRepairServices';
 
 const Carousel = (props) => {
@@ -41,51 +41,49 @@ const Carousel = (props) => {
           .slice(currentImageIndex, currentImageIndex + 3)
           .map((service) => (
             <div className="carousel-item" key={service.id}>
-              <img
-                src={service.photo}
-                alt={service.service}
-                className="carousel-image"
-              />
-              <div className="p-4 text-gray-500">
-                <h3
-                  className="text-xl font-semibold cursor-pointer mb-2 border-b border-dashed border-indigo-600 leading-[2]"
-                  onClick={() => {
-                    navigate('/service_details');
-                    selectedService(service);
-                  }}
-                >
-                  {service.service}
-                </h3>
-                <p className="mb-4 text-sm font-normal w-60">
-                  {service.description}
-                </p>
-                <div className="flex items-center justify-center w-64">
-                  <IconContext.Provider
-                    value={{
-                      color: 'gray',
-                      className: 'text-gray-600 mr-4 hover:text-blue-500',
-                    }}
+              <NavLink to={`/service/${service.id}`}>
+                <img
+                  src={service.photo}
+                  alt={service.service}
+                  className="carousel-image"
+                />
+                <div className="p-4 text-gray-500">
+                  <h3
+                    className="text-xl font-semibold cursor-pointer mb-2 border-b border-dashed border-indigo-600 leading-[2]"
                   >
-                    <FaFacebook size={24} />
-                  </IconContext.Provider>
-                  <IconContext.Provider
-                    value={{
-                      color: 'gray',
-                      className: 'text-gray-600 mr-4 hover:text-blue-500',
-                    }}
-                  >
-                    <FaTwitter size={24} />
-                  </IconContext.Provider>
-                  <IconContext.Provider
-                    value={{
-                      color: 'gray',
-                      className: 'text-gray-600 mr-4 hover:text-blue-500',
-                    }}
-                  >
-                    <FaInstagram size={24} />
-                  </IconContext.Provider>
+                    {service.service}
+                  </h3>
+                  <p className="mb-4 text-sm font-normal w-60">
+                    {service.description}
+                  </p>
+                  <div className="flex items-center justify-center w-64">
+                    <IconContext.Provider
+                      value={{
+                        color: 'gray',
+                        className: 'text-gray-600 mr-4 hover:text-blue-500',
+                      }}
+                    >
+                      <FaFacebook size={24} />
+                    </IconContext.Provider>
+                    <IconContext.Provider
+                      value={{
+                        color: 'gray',
+                        className: 'text-gray-600 mr-4 hover:text-blue-500',
+                      }}
+                    >
+                      <FaTwitter size={24} />
+                    </IconContext.Provider>
+                    <IconContext.Provider
+                      value={{
+                        color: 'gray',
+                        className: 'text-gray-600 mr-4 hover:text-blue-500',
+                      }}
+                    >
+                      <FaInstagram size={24} />
+                    </IconContext.Provider>
+                  </div>
                 </div>
-              </div>
+              </NavLink>
             </div>
           ))}
       </div>

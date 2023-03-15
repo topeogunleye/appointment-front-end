@@ -44,7 +44,7 @@ function App() {
           <Route path="/ReservationForm" element={<ReservationForm />} />
           <Route path="loginsignup" element={<Loginsignup />} />
           <Route
-            path="/service_details"
+            path="/service/:id"
             element={(
               <ServiceDetails details={serviceDetailsData} />
             )}
