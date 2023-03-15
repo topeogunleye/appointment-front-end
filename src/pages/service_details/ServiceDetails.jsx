@@ -16,12 +16,12 @@ function ServiceDetails(props) {
   return (
     <div className="service-details-styles w-1/2 flex justify-between pt-8">
       <div className="image-back-section">
-        <div className="image-container">
+        <div className="image-container ml-5">
           <img src={photo} alt={service} className="service-image" />
         </div>
         <button
           type="button"
-          className="bg-green rounded-r-full w-12 p-1.5 back-button"
+          className="bg-green rounded-r-full w-12 p-1.5 back-button float-left mt-5"
           onClick={() => {
             navigate('/CarRepairs');
           }}
