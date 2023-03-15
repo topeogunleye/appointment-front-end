@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
 import CarRepairs from './pages/carrepairs/CarRepairs';
@@ -9,75 +10,52 @@ import './App.css';
 import Loginsignup from './pages/signuplogin/SignUpLogin';
 import ReservationForm from './pages/reservationform/ReservationForm';
 import ServicesForm from './pages/addservice/addseviceform';
+import ServiceDetails from './pages/service_details/ServiceDetails';
 
 function App() {
+  const [serviceDetailsData, setServiceDetailsData] = useState({});
+
+  const handleServiceClick = (data) => {
+    setServiceDetailsData(data);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes className="flex">
           <Route
             path="/"
-            element={(
+            element={
               <div className="flex">
                 <Sidebar />
                 <div>This is the main index page for all of the services</div>
               </div>
-            )}
+            }
           />
           <Route
             path="/CarRepairs"
-            element={
-              <CarRepairs />
-            }
+            element={<CarRepairs handleServiceClick={handleServiceClick} />}
           />
-          <Route
-            path="/services"
-            element={
-              <Services />
-            }
-          />
-          <Route
-            path="/reservations"
-            element={
-              <Reservations />
-            }
-          />
-          <Route
-            path="/AddReservationForm"
-            element={
-              <AddReservationForm />
-            }
-          />
+          <Route path="/services" element={<Services />} />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/AddReservationForm" element={<AddReservationForm />} />
           <Route
             path="/RemoveReservationForm"
-            element={
-              <RemoveReservationForm />
-            }
+            element={<RemoveReservationForm />}
           />
+          <Route path="/ReservationForm" element={<ReservationForm />} />
+          <Route path="loginsignup" element={<Loginsignup />} />
           <Route
-            path="/ReservationForm"
+            path="/service_details"
             element={
-              <ReservationForm />
+              <div className="flex">
+                <Sidebar />
+                <ServiceDetails details={serviceDetailsData} />
+              </div>
             }
           />
-          <Route
-            path="loginsignup"
-            element={
-              <Loginsignup />
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <div>404 Not Found</div>
-            }
-          />
-          <Route
-            path="/AddService"
-            element={
-              <ServicesForm />
-            }
-          />
+          <Route path="*" element={<div>404 Not Found</div>} />
+          <Route path="/AddService" element={<ServicesForm />} />
         </Routes>
       </BrowserRouter>
     </div>
