@@ -10,7 +10,6 @@ const SERVICES_URL = 'http://[::1]:8000/reservation';
 export const fetchServices = createAsyncThunk('FETCH_SERVICES', async () => {
   const response = await fetch(SERVICES_URL);
   const data = await response.json();
-  console.log('data: ', data);
   return data;
 });
 
@@ -25,7 +24,6 @@ export const postServices = createAsyncThunk('POST_SERVICES', async (data) => {
   });
   const res = await req.json();
   const result = await res.data();
-  console.log('result: ', result);
   return result;
 });
 

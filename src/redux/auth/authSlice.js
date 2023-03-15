@@ -5,7 +5,7 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(credentials),
   });
@@ -18,12 +18,11 @@ export const signup = createAsyncThunk('auth/signup', async (credentials) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(credentials),
   });
   const data = await response.json();
-  console.log(data);
   return data;
 });
 

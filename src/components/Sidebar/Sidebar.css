@@ -10,10 +10,6 @@
   display: inline-block;
 }
 
-.nav-menu {
-  justify-content: center;
-}
-
 .button {
   padding: 0 18px;
   height: 40px;
@@ -44,6 +40,17 @@
   text-align: center;
   cursor: pointer;
   transition: all 200ms ease;
+}
+
+.nav-menu {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (min-width: 1024px) {
@@ -79,7 +86,7 @@
   align-items: center;
   padding: 0 16px;
   border-top-left-radius: 0.25rem; /* 4px */
-border-bottom-left-radius: 0.25rem; /* 4px */
+  border-bottom-left-radius: 0.25rem; /* 4px */
 }
 
 .social-media {

@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import servicesSlice from './carRepairServices';
+import servicesSlice from './serviceSlice';
 import reservationSlice from './reservationSlice';
 import authSlice from './auth/authSlice';
 
