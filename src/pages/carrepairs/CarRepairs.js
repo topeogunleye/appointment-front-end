@@ -19,7 +19,7 @@ const CarRepairs = (props) => {
   }, [dispatch]);
 
   return (
-    <div className="grid grid-cols-custom">
+    <div className="grid lg:grid-cols-custom">
       <Sidebar />
       <div className="grid items-center min-h-screen font-bold">
         <div className="grid place-items-center justify-center">

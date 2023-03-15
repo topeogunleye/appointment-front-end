@@ -26,7 +26,7 @@ function ServiceDetails() {
   } = service;
 
   return (
-    <div className="grid grid-cols-custom">
+    <div className="grid lg:grid-cols-custom">
       <Sidebar />
       <div className="service-details-styles w-1/2 flex justify-between pt-8">
         <div className="image-back-section">
