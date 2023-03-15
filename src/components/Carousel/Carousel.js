@@ -41,7 +41,7 @@ const Carousel = (props) => {
           .slice(currentImageIndex, currentImageIndex + 3)
           .map((service) => (
             <div className="carousel-item" key={service.id}>
-              <NavLink to={`/service/${service.id}`}>
+              <NavLink to={`/services/${service.id}`}>
                 <img
                   src={service.photo}
                   alt={service.service}
