@@ -23,7 +23,6 @@ export const signup = createAsyncThunk('auth/signup', async (credentials) => {
     body: JSON.stringify(credentials),
   });
   const data = await response.json();
-  console.log(data);
   return data;
 });
 

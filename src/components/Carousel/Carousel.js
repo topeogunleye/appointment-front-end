@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IconContext } from 'react-icons';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Carousel.css';
+import './CarouselResponsive.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchServices } from '../../redux/carRepairServices';
 
@@ -14,7 +15,7 @@ const Carousel = (props) => {
 
   useEffect(() => {
     dispatch(fetchServices());
-  }, []);
+  }, [dispatch]);
 
   const services = useSelector((state) => state.services);
 

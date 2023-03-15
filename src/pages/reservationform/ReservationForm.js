@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DatePicker from 'react-datepicker';
 import { postServices } from '../../redux/reservationSlice';
 
 const ReservationForm = () => {
@@ -10,28 +11,24 @@ const ReservationForm = () => {
   const [color, setColor] = useState('');
   const [location, setLocation] = useState('');
   const [service, setService] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
   const isLoading = useSelector((state) => state.isLoading);
   const userId = useSelector((state) => state.auth.user.id);
-
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     dispatch(postServices({
-  //       vehicle, model, year, color, location, service, userId,
-  //     }));
-  //   }
-  // }, [isLoading]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
     dispatch(postServices({
-      vehicle, model, year, color, location, service, userId,
+      startDate, vehicle, model, year, color, location, service, userId,
     }));
   };
 
   return (
     <div className="">
       <form onSubmit={handleFormSubmit} className="max-w-lg mx-auto p-8">
+        {/* temi look here */}
+        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        {/* please */}
         <div className="mb-4">
           <label htmlFor="vehicle" className="block font-medium mb-2">
             Vehicle

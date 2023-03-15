@@ -1,0 +1,99 @@
+.homepage {
+  height: 100vh;
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.background-image {
+  background-image: url('https://images.unsplash.com/photo-1499895131197-cd28aafbe3c9');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  height: 100%;
+  position: absolute;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.configure-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #34a853;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50rem;
+  border: none;
+  cursor: pointer;
+}
+
+.settings-icon {
+  margin-right: 0.5rem;
+}
+
+.right-caret-icon {
+  margin-left: 0.5rem;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.search-icon {
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.loading-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dot1,
+.dot2,
+.dot3,
+.dot4 {
+  width: 10px;
+  height: 10px;
+  background-color: #00b894;
+  border-radius: 50%;
+  margin: 5px;
+  animation: bounce 0.5s infinite alternate;
+}
+
+.dot2 {
+  animation-delay: 0.1s;
+}
+
+.dot3 {
+  animation-delay: 0.2s;
+}
+
+.dot4 {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.2);
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,15 +19,18 @@ function LoginForm({ handleLogin }) {
     setPassword(evt.target.value);
   };
 
+  useEffect(() => {
+    if (status === 'succeeded') {
+      navigate('/');
+    }
+  }, [status, navigate]);
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     dispatch(login({ username, password })).then((result) => {
       if (result.payload) {
         localStorage.setItem('token', result.payload.jwt);
         handleLogin(result.payload.user);
-        if (status === 'succeeded') {
-          navigate('/');
-        }
       }
     });
   };

@@ -1,5 +1,6 @@
 .bg-top {
   background-image: linear-gradient(to right bottom, rgba(150, 191, 1, 0.8), rgba(150, 191, 1, 0.8)), url('../../images/hero2.jpg');
+  width: 100vw;
 }
 
 .button {
@@ -17,4 +18,10 @@
   text-align: center;
   cursor: pointer;
   transition: all 200ms ease;
+}
+
+@media screen and (min-width: 768px) {
+  .bg-top {
+    width: initial;
+  }
 }

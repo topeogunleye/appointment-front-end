@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import {
+  useEffect, useState, useRef,
+} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import * as FaIcons from 'react-icons/fa';
@@ -49,15 +51,26 @@ export default function Sidebar() {
     setSidebar(false);
   });
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      dispatch({ type: 'auth/loginSuccess', payload: JSON.parse(storedUser) });
+    }
+  }, [dispatch]);
+
+  const sidebarDiv = (() => (
+    <div className="transition-all duration-1000 ease-out">
+      <NavLink to="#" className="menu-bars ml-4 md:ml-8 text-2xl sm:text-3xl lg:collapse">
+        <FaIcons.FaBars onClick={showSidebar} />
+      </NavLink>
+    </div>
+  ));
+
   return (
-    <div className="py-2 pl-2 static border-r border-gray-600 z-10">
-      <div className="transition-all duration-1000 ease-out">
-        <NavLink to="#" className="menu-bars ml-4 md:ml-8 text-2xl sm:text-3xl">
-          <FaIcons.FaBars onClick={showSidebar} />
-        </NavLink>
-      </div>
+    <>
+      {sidebarDiv()}
       <nav
-        className={sidebar ? 'nav-menu active' : 'nav-menu'}
+        className={sidebar ? 'nav-menu active border-r border-gray-600 z-10 bg-white' : 'nav-menu'}
         ref={domNode}
       >
         <ul className="nav-menu-items">
@@ -111,9 +124,9 @@ export default function Sidebar() {
               <button type="button" className="bg-gray-500 text-white w-24 py-1.5 px-1 rounded-full" onClick={handleSignOut}>Sign Out</button>
             ) : (
               <button type="button" onClick={handleSignIn} className="bg-green text-white w-24 py-1.5 px-1 rounded-full">Sign In</button>
-              // <NavLink className="option" to="/loginsignup/">
-              //   SIGN IN
-              // </NavLink>
+            // <NavLink className="option" to="/loginsignup/">
+            //   SIGN IN
+            // </NavLink>
             )}
           </div>
           <div className="social-media inline-block">
@@ -160,7 +173,6 @@ export default function Sidebar() {
           </div>
         </div>
       </nav>
-
-    </div>
+    </>
   );
 }

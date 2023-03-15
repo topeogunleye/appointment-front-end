@@ -6,7 +6,7 @@ import './AddReservationForm.css';
 
 function AddReservationForm() {
   return (
-    <div className="grid grid-cols-custom">
+    <div className="grid lg:grid-cols-custom">
       <Sidebar />
       <div className="grid items-center min-h-screen bg-cover bg-repeat bg-top text-white">
         <div className="h-80 grid items-center">

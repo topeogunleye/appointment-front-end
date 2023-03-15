@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Sidebar from './components/Sidebar/Sidebar';
 import CarRepairs from './pages/carrepairs/CarRepairs';
 import RemoveReservationForm from './pages/removereservationForm/RemoveReservationForm';
 import AddReservationForm from './pages/addreservationform/AddReservationForm';
@@ -10,7 +9,9 @@ import './App.css';
 import Loginsignup from './pages/signuplogin/SignUpLogin';
 import ReservationForm from './pages/reservationform/ReservationForm';
 import ServicesForm from './pages/addservice/addseviceform';
+import Homepage from './pages/home/Homepage';
 import ServiceDetails from './pages/service_details/ServiceDetails';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [serviceDetailsData, setServiceDetailsData] = useState({});
@@ -26,10 +27,7 @@ function App() {
           <Route
             path="/"
             element={(
-              <div className="flex">
-                <Sidebar />
-                <div>This is the main index page for all of the services</div>
-              </div>
+              <Homepage />
             )}
           />
           <Route
