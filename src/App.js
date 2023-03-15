@@ -11,6 +11,7 @@ import ReservationForm from './pages/reservationform/ReservationForm';
 import ServicesForm from './pages/addservice/addseviceform';
 import Homepage from './pages/home/Homepage';
 import ServiceDetails from './pages/service_details/ServiceDetails';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [serviceDetailsData, setServiceDetailsData] = useState({});
