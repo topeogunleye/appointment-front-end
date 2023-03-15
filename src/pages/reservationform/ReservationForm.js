@@ -35,8 +35,8 @@ const ReservationForm = () => {
     <div className="">
       <form onSubmit={handleFormSubmit} className="max-w-lg mx-auto p-8">
         {/* temi look here */}
-      <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-      {/* please */}
+        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        {/* please */}
         <div className="mb-4">
           <label htmlFor="vehicle" className="block font-medium mb-2">
             Vehicle
