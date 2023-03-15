@@ -8,8 +8,9 @@ function ServiceDetails(props) {
   const navigate = useNavigate();
   console.log(props);
 
-  const { service, photo, engineer, price, labour, duration, description } =
-    props.details;
+  const {
+    service, photo, engineer, price, labour, duration, description,
+  } = props.details;
 
   console.log(photo);
 
@@ -45,7 +46,7 @@ function ServiceDetails(props) {
             <tr>
               <td>Price</td>
               <td>
-                {'$'}
+                $
                 {price}
               </td>
             </tr>

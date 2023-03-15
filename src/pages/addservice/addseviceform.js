@@ -19,7 +19,7 @@ const ServiceForm = () => {
     e.preventDefault();
 
     dispatch(postService({
-      service, photo, engineer, price, labour, duration, description
+      service, photo, engineer, price, labour, duration, description,
     }));
 
     setService('');

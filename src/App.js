@@ -25,12 +25,12 @@ function App() {
         <Routes className="flex">
           <Route
             path="/"
-            element={
+            element={(
               <div className="flex">
                 <Sidebar />
                 <div>This is the main index page for all of the services</div>
               </div>
-            }
+            )}
           />
           <Route
             path="/CarRepairs"
@@ -47,12 +47,12 @@ function App() {
           <Route path="loginsignup" element={<Loginsignup />} />
           <Route
             path="/service_details"
-            element={
+            element={(
               <div className="flex">
                 <Sidebar />
                 <ServiceDetails details={serviceDetailsData} />
               </div>
-            }
+            )}
           />
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/AddService" element={<ServicesForm />} />

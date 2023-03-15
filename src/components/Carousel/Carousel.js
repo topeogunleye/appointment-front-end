@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IconContext } from 'react-icons';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Carousel.css';
-import { fetchServices } from '../../redux/carRepairServices';
 import { useNavigate } from 'react-router-dom';
+import { fetchServices } from '../../redux/carRepairServices';
 
 const Carousel = (props) => {
   const dispatch = useDispatch();
@@ -23,9 +23,8 @@ const Carousel = (props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrevClick = () => {
-    const newStartIndex =
-      (currentImageIndex - 3 + services.services.length) %
-      services.services.length;
+    const newStartIndex = (currentImageIndex - 3 + services.services.length)
+      % services.services.length;
     setCurrentImageIndex(newStartIndex);
   };
 

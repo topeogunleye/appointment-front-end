@@ -8,12 +8,12 @@ const initialState = {
 const API_URL = 'http://[::1]:8000/services';
 
 export const postService = createAsyncThunk('postService', async (data) => {
-  console.log(data)
+  console.log(data);
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(data),
   });
