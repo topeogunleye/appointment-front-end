@@ -3,6 +3,7 @@ import './ServiceDetails.css';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 function ServiceDetails(props) {
   const navigate = useNavigate();
@@ -15,65 +16,68 @@ function ServiceDetails(props) {
   console.log(photo);
 
   return (
-    <div className="service-details-styles w-1/2 flex justify-between pt-8">
-      <div className="image-back-section">
-        <div className="image-container ml-5">
-          <img src={photo} alt={service} className="service-image" />
-        </div>
-        <button
-          type="button"
-          className="bg-green rounded-r-full w-12 p-1.5 back-button float-left mt-5"
-          onClick={() => {
-            navigate('/CarRepairs');
-          }}
-        >
-          <IconContext.Provider
-            value={{ color: '#ffffff', className: 'global-class-name' }}
+    <div className="grid grid-cols-custom">
+      <Sidebar />
+      <div className="service-details-styles w-1/2 flex justify-between pt-8">
+        <div className="image-back-section">
+          <div className="image-container ml-5">
+            <img src={photo} alt={service} className="service-image" />
+          </div>
+          <button
+            type="button"
+            className="bg-green rounded-r-full w-12 p-1.5 back-button float-left mt-5"
+            onClick={() => {
+              navigate('/CarRepairs');
+            }}
           >
-            <FaIcons.FaCaretLeft />
-          </IconContext.Provider>
-        </button>
-      </div>
-      <div className="mx-auto flex flex-col pt-4 gap-y-5">
-        <h1 className="self-end text-xl font-bold">{service}</h1>
-        <p className="self-end">50% deposit</p>
-        <table>
-          <tbody>
-            <tr>
-              <td>Engineer</td>
-              <td>{engineer}</td>
-            </tr>
-            <tr>
-              <td>Price</td>
-              <td>
-                $
-                {price}
-              </td>
-            </tr>
-            <tr>
-              <td>Labour</td>
-              <td>{labour}</td>
-            </tr>
-            <tr>
-              <td>Duration</td>
-              <td>{duration}</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td>{description}</td>
-            </tr>
-          </tbody>
-        </table>
+            <IconContext.Provider
+              value={{ color: '#ffffff', className: 'global-class-name' }}
+            >
+              <FaIcons.FaCaretLeft />
+            </IconContext.Provider>
+          </button>
+        </div>
+        <div className="mx-auto flex flex-col pt-4 gap-y-5">
+          <h1 className="self-end text-xl font-bold">{service}</h1>
+          <p className="self-end">50% deposit</p>
+          <table>
+            <tbody>
+              <tr>
+                <td>Engineer</td>
+                <td>{engineer}</td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td>
+                  $
+                  {price}
+                </td>
+              </tr>
+              <tr>
+                <td>Labour</td>
+                <td>{labour}</td>
+              </tr>
+              <tr>
+                <td>Duration</td>
+                <td>{duration}</td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td>{description}</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <button
-          type="button"
-          className="bg-green text-white w-24 py-1.5 px-1 rounded-full self-end"
-          onClick={() => {
-            navigate('/AddReservationForm');
-          }}
-        >
-          Book
-        </button>
+          <button
+            type="button"
+            className="bg-green text-white w-24 py-1.5 px-1 rounded-full self-end"
+            onClick={() => {
+              navigate('/AddReservationForm');
+            }}
+          >
+            Book
+          </button>
+        </div>
       </div>
     </div>
   );

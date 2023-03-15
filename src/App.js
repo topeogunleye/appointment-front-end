@@ -46,10 +46,7 @@ function App() {
           <Route
             path="/service_details"
             element={(
-              <div className="flex">
-                <Sidebar />
-                <ServiceDetails details={serviceDetailsData} />
-              </div>
+              <ServiceDetails details={serviceDetailsData} />
             )}
           />
           <Route path="*" element={<div>404 Not Found</div>} />
