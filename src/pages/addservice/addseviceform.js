@@ -41,7 +41,7 @@ const ServiceForm = () => {
       </div>
       <div className="mb-4">
         <label htmlFor="photo" className="block text-gray-700 font-bold mb-2">Photo:</label>
-        <input type="text" id="photo" name="photo" onChange={(e) => setPhoto(e.target.files[0])} className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        <input type="text" id="photo" name="photo" onChange={(e) => setPhoto(e.target.value)} placeholder = 'copy image address only from url' className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
       </div>
       <div className="mb-4">
         <label htmlFor="engineer" className="block text-gray-700 font-bold mb-2">Engineer:</label>
