@@ -14,7 +14,7 @@ function ServiceDetails(props) {
   console.log(photo);
 
   return (
-    <div className="service-details-styles border-2 border-black w-1/2 flex justify-between pt-8">
+    <div className="service-details-styles w-1/2 flex justify-between pt-8">
       <div className="image-back-section">
         <div className="image-container">
           <img src={photo} alt={service} className="service-image" />
