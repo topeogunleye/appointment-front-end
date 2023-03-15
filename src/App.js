@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
 import CarRepairs from './pages/carrepairs/CarRepairs';
@@ -5,10 +6,19 @@ import RemoveReservationForm from './pages/removereservationForm/RemoveReservati
 import AddReservationForm from './pages/addreservationform/AddReservationForm';
 import Services from './pages/services/Services';
 import Reservations from './pages/reservations/Reservations';
-import ServiceForm from './pages/serviceform/ServiceForm';
 import './App.css';
+import Loginsignup from './pages/signuplogin/SignUpLogin';
+import ReservationForm from './pages/reservationform/ReservationForm';
+import ServicesForm from './pages/addservice/addseviceform';
+import ServiceDetails from './pages/service_details/ServiceDetails';
 
 function App() {
+  const [serviceDetailsData, setServiceDetailsData] = useState({});
+
+  const handleServiceClick = (data) => {
+    setServiceDetailsData(data);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,40 +34,28 @@ function App() {
           />
           <Route
             path="/CarRepairs"
-            element={
-              <CarRepairs />
-            }
+            element={<CarRepairs handleServiceClick={handleServiceClick} />}
           />
-          <Route
-            path="/services"
-            element={
-              <Services />
-            }
-          />
-          <Route
-            path="/reservations"
-            element={
-              <Reservations />
-            }
-          />
-          <Route
-            path="/AddReservationForm"
-            element={
-              <AddReservationForm />
-            }
-          />
+          <Route path="/services" element={<Services />} />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/AddReservationForm" element={<AddReservationForm />} />
           <Route
             path="/RemoveReservationForm"
-            element={
-              <RemoveReservationForm />
-            }
+            element={<RemoveReservationForm />}
           />
+          <Route path="/ReservationForm" element={<ReservationForm />} />
+          <Route path="loginsignup" element={<Loginsignup />} />
           <Route
-            path="ServiceForm"
-            element={
-              <ServiceForm />
-            }
+            path="/service_details"
+            element={(
+              <div className="flex">
+                <Sidebar />
+                <ServiceDetails details={serviceDetailsData} />
+              </div>
+            )}
           />
+          <Route path="*" element={<div>404 Not Found</div>} />
+          <Route path="/AddService" element={<ServicesForm />} />
         </Routes>
       </BrowserRouter>
     </div>

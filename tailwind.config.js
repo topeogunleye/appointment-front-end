@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      lineHeight: {
+        'extra-loose': '2.5',
+        12: '0.1rem',
+      },
       backgroundImage: {
         'hero-pattern': "url('./images/hero2.jpg')",
       },
@@ -14,9 +18,10 @@ module.exports = {
         '3/4': '75%',
       },
       gridTemplateColumns: {
-        custom: 'minmax(150px, 18%) 1fr',
+        custom: 'minmax(250px, 18%) 1fr',
       },
       letterSpacing: {
+        wider: '0.15em',
         widest: '.5em',
       },
       colors: {
