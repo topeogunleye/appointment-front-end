@@ -15,14 +15,6 @@ const ReservationForm = () => {
   const isLoading = useSelector((state) => state.isLoading);
   const userId = useSelector((state) => state.auth.user.id);
 
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     dispatch(postServices({
-  //       vehicle, model, year, color, location, service, userId,
-  //     }));
-  //   }
-  // }, [isLoading]);
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
