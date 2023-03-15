@@ -1,19 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DatePicker from 'react-datepicker';
+import DatePicker from 'react-multi-date-picker';
+import InputIcon from 'react-multi-date-picker/components/input_icon';
+// import DatePicker from 'react-datepicker';
 import { postServices } from '../../redux/reservationSlice';
+import './ReservationForm.css';
 
 const ReservationForm = () => {
+  const selectedOption = useSelector((state) => state.selectDropdown.selectedOption);
   const dispatch = useDispatch();
+
   const [vehicle, setVehicle] = useState('');
   const [model, setModel] = useState('');
   const [year, setYear] = useState('');
   const [color, setColor] = useState('');
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(selectedOption);
   const [service, setService] = useState('');
   const [startDate, setStartDate] = useState(new Date());
+
   const isLoading = useSelector((state) => state.isLoading);
   const userId = useSelector((state) => state.auth.user.id);
+  const userName = useSelector((state) => state.auth.user.username);
+
+  // Watch for changes to the selectedOption state value, and update location accordingly
+  useEffect(() => {
+    setLocation(selectedOption);
+  }, [selectedOption]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -26,8 +38,21 @@ const ReservationForm = () => {
   return (
     <div className="">
       <form onSubmit={handleFormSubmit} className="max-w-lg mx-auto p-8">
-        {/* temi look here */}
-        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        <label htmlFor="username" className="block font-medium mb-2">
+          Name:
+          <input type="text" value={userName} disabled />
+        </label>
+
+        <div className="mb-4">
+          <div className="datepicker-container">
+            <label htmlFor="datepicker" className="block font-medium mb-2">
+              Select Date:
+            </label>
+            <DatePicker
+              render={<InputIcon />}
+            />
+          </div>
+        </div>
         {/* please */}
         <div className="mb-4">
           <label htmlFor="vehicle" className="block font-medium mb-2">
@@ -89,18 +114,12 @@ const ReservationForm = () => {
         <div className="mb-4">
           <label htmlFor="location" className="block font-medium mb-2">
             Location
-            <select
-              id="location"
-              name="location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-            >
-              <option value="">Select a location</option>
-              <option value="new-york">New York</option>
-              <option value="los-angeles">Los Angeles</option>
-              <option value="chicago">Chicago</option>
-              <option value="miami">Miami</option>
+            <select value={selectedOption} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500">
+              <option>New York</option>
+              <option>Los Angeles</option>
+              <option>Chicago</option>
+              <option>Houston</option>
+              <option>Philadelphia</option>
             </select>
           </label>
         </div>

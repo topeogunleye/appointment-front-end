@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import './AddReservationForm.css';
+import { setSelectedOption } from '../../redux/selectDropdownSlice';
 
 function AddReservationForm() {
+  const selectedOption = useSelector((state) => state.selectDropdown.selectedOption);
+  const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    dispatch(setSelectedOption(event.target.value));
+  };
+
   return (
     <div className="grid lg:grid-cols-custom">
       <Sidebar />
@@ -22,7 +31,7 @@ function AddReservationForm() {
           </p>
           <div className="flex items-center justify-between m-auto w-80">
             <div className="relative">
-              <select className="block appearance-none w-full bg-green border border-white-300 hover:border-white-400 rounded-full py-2 pl-4 pr-8 leading-tight focus:outline-none focus:ring focus:border-blue-300">
+              <select value={selectedOption} onChange={handleChange} className="block appearance-none w-full bg-green border border-white-300 hover:border-white-400 rounded-full py-2 pl-4 pr-8 leading-tight focus:outline-none focus:ring focus:border-blue-300">
                 <option>New York</option>
                 <option>Los Angeles</option>
                 <option>Chicago</option>

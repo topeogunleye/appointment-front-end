@@ -35,7 +35,7 @@ export default function Sidebar() {
   const dispatch = useDispatch();
 
   const handleSignIn = async () => {
-    const credentials = { username: 'admin', password: 'admin' }; // replace with your own login form data
+    const credentials = { username: 'User', password: 'admin' }; // replace with your own login form data
     await dispatch(login(credentials));
   };
 

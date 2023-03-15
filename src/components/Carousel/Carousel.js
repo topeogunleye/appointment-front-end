@@ -48,7 +48,7 @@ const Carousel = (props) => {
               />
               <div className="p-4 text-gray-500">
                 <h3
-                  className="text-xl font-semibold mb-2 border-b border-dashed border-indigo-600 leading-[2]"
+                  className="text-xl font-semibold cursor-pointer mb-2 border-b border-dashed border-indigo-600 leading-[2]"
                   onClick={() => {
                     navigate('/service_details');
                     selectedService(service);
