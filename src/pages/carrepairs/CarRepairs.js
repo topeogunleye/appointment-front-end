@@ -5,8 +5,14 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { fetchServices } from '../../redux/carRepairServices';
 import Carousel from '../../components/Carousel/Carousel';
 
-const CarRepairs = () => {
+const CarRepairs = (props) => {
   const dispatch = useDispatch();
+
+  const { handleServiceClick } = props;
+
+  const selectedService = (data) => {
+    handleServiceClick(data);
+  };
 
   const images = [
     {
@@ -94,10 +100,12 @@ const CarRepairs = () => {
       <Sidebar />
       <div className="grid items-center min-h-screen font-bold">
         <div className="grid place-items-center justify-center">
-          <h1 className="text-black-600 text-2xl tracking-wider">LATEST SERVICES</h1>
+          <h1 className="text-black-600 text-2xl tracking-wider">
+            LATEST SERVICES
+          </h1>
           <p className="text-sm text-gray-400">Please select a new Service</p>
         </div>
-        <Carousel images={images} />
+        <Carousel images={images} selectedService={selectedService} />
       </div>
     </div>
   );
