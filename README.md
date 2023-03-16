@@ -2,10 +2,10 @@
 
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img class="README-logo" src="./app/assets/logo-jpg.jpg" alt="logo" width="140"  height="150" />
+  <img class="README-logo" src="./src/images/logo.png" alt="logo" width="140"  height="150" />
   <br/>
 
-  <h3><b>Book an Appointment Front-End README</b></h3>
+  <h3><b>BareFoot Mechanic</b></h3>
 
 </div>
 
@@ -31,7 +31,7 @@
 
 # 📖 [] <a name="about-project"></a>
 
-**[Final Capstone Project]** is based on an app to book an appointment for a car repair service.
+**[BareFoot Mechanic]** is a full stack web app tht showcases the services rendered at an auto-repair shop where a client can book an appointment with an engineer to patronize any of the services.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -42,6 +42,11 @@
   <ul>
     <li><a href="https://reactjs.org/">React.js</a></li>
   </ul>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
+  </ul>
+
 </details>
 
 ### Key Features <a name="key-features"></a>
@@ -67,8 +72,12 @@ In order to run this project you need:
 
 - Create React App
 
-  ```sh
-  npm i create-react-app
+  ```
+  - Node
+  - Ruby
+  - Text editor
+  - Web browser
+  - npm
   ```
 
 ### Setup
@@ -78,8 +87,13 @@ Clone this repository to your desired folder:
 Example commands:
 
 ```sh
-  cd my-folder
-  git clone git@github.com:topeogunleye/appointment-front-end.git
+  - cd desired-folder
+  - git clone git@github.com:topeogunleye/appointment-front-end.git
+  - cd appointment-front-end
+  - code .
+
+
+
 ```
 
 ### Install
@@ -88,8 +102,8 @@ Install this project with:
 
 - Install Node Modules
 
-  ```sh
-  npm install
+  ```
+  - npm install
   ```
 
 ### Usage
@@ -101,6 +115,8 @@ To run the project, execute the following command:
   ```sh
   npm start
   ```
+
+- Be sure to start the backend server before starting the front end server
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
