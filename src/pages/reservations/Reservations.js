@@ -128,19 +128,19 @@ const Reservations = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {service.vehicle}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.model}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.year}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.color}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.location}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.service}
                 </td>
               </tr>
