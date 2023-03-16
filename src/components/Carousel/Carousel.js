@@ -8,10 +8,8 @@ import './Carousel.css';
 import './CarouselResponsive.css';
 import { fetchServices } from '../../redux/carRepairServices';
 
-const Carousel = (props) => {
+const Carousel = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { selectedService } = props;
 
   useEffect(() => {
     dispatch(fetchServices());
@@ -22,8 +20,9 @@ const Carousel = (props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrevClick = () => {
-    const newStartIndex = (currentImageIndex - 3 + services.services.length)
-      % services.services.length;
+    const newStartIndex =
+      (currentImageIndex - 3 + services.services.length) %
+      services.services.length;
     setCurrentImageIndex(newStartIndex);
   };
 
