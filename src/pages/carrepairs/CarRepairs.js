@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './CarRepair.css';
+import PropTypes from 'prop-types';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Carousel from '../../components/Carousel/Carousel';
 import { fetchService } from '../../redux/serviceSlice';
@@ -32,6 +33,10 @@ const CarRepairs = (props) => {
       </div>
     </div>
   );
+};
+
+CarRepairs.propTypes = {
+  handleServiceClick: PropTypes.func.isRequired,
 };
 
 export default CarRepairs;
