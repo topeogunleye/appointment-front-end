@@ -17,7 +17,7 @@ const ReservationForm = () => {
   const [color, setColor] = useState('');
   const [location, setLocation] = useState(selectedOption);
   const [service, setService] = useState('');
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
 
   const isLoading = useSelector((state) => state.isLoading);
   const userId = useSelector((state) => (state.auth.user ? state.auth.user.id : null));
@@ -30,18 +30,21 @@ const ReservationForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const payload = {
-      startDate,
-      vehicle,
-      model,
-      year,
-      color,
-      location,
-      service,
-      userId,
-      userName,
-    };
-    dispatch(postServices(payload));
+    dispatch(postServices({
+      selectedDate: startDate,
+      data:
+       {
+         vehicle, model, year, color, location, service, userId, username: userName,
+       },
+    }));
+    // Reset the form after submission
+    setVehicle('');
+    setModel('');
+    setYear('');
+    setColor('');
+    setService('');
+
+    navigate('/AddReservationForm'); // redirect to home page after form submission
   };
 
   const handleDateChange = (selectedDate) => {

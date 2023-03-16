@@ -9,9 +9,10 @@ const Reservations = () => {
   const navigate = useNavigate();
   const reservations = useSelector((state) => (state.reservation.formData
     ? state.reservation.formData : null));
+  console.log('reservations:', reservations);
   const isLoading = useSelector((state) => state.isLoading);
   const user = useSelector((state) => (state.auth.user ? state.auth.user : null));
-  // console.log(user);
+  console.log(user);
   useEffect(() => {
     dispatch(fetchServices());
   }, [dispatch]);
@@ -20,9 +21,9 @@ const Reservations = () => {
     navigate('/');
   };
 
-  if (!reservations || isLoading) {
+  if (!reservations) {
     return <p>Loading...</p>;
-  } if (reservations.length === 0) {
+  } if (!Object.values(reservations).length) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <button
@@ -52,10 +53,11 @@ const Reservations = () => {
   let userReservations = [];
 
   if (user && reservations) {
-    userReservations = reservations.filter(
-      (reservation) => reservation.id === user.id,
+    userReservations = Object.values(reservations).filter(
+      (reservation) => reservation.username === user.username,
     );
   }
+
   return (
     <div className="grid lg:grid-cols-custom">
       <Sidebar />
