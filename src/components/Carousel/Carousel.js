@@ -19,13 +19,12 @@ const Carousel = (props) => {
 
   const services = useSelector((state) => state.services);
 
-  console.log(services);
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrevClick = () => {
-    const newStartIndex = (currentImageIndex - 3 + services.services.length)
-      % services.services.length;
+    const newStartIndex =
+      (currentImageIndex - 3 + services.services.length) %
+      services.services.length;
     setCurrentImageIndex(newStartIndex);
   };
 
@@ -48,9 +47,7 @@ const Carousel = (props) => {
                   className="carousel-image"
                 />
                 <div className="p-4 text-gray-500">
-                  <h3
-                    className="text-xl font-semibold cursor-pointer mb-2 border-b border-dashed border-indigo-600 leading-[2]"
-                  >
+                  <h3 className="text-xl font-semibold cursor-pointer mb-2 border-b border-dashed border-indigo-600 leading-[2]">
                     {service.service}
                   </h3>
                   <p className="mb-4 text-sm font-normal w-60">
