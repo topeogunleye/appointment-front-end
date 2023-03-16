@@ -17,7 +17,6 @@ const saveTokenMiddleware = (store) => (next) => (action) => {
 // Middleware to retrieve authentication token from local storage
 const loadTokenMiddleware = (store) => {
   const token = localStorage.getItem('user');
-  console.log(token);
   if (token) {
     store.dispatch(setToken(token));
   }
