@@ -62,8 +62,7 @@ const ReservationForm = () => {
     <div className="">
       <form onSubmit={handleFormSubmit} className="max-w-lg mx-auto p-8">
         <label htmlFor="username" className="block font-medium mb-2 flex items-center justify-center">
-          Name:
-          <input type="text" value={userName || ''} disabled />
+          Name: <input type="text" className='ml-34' value={userName || ''} disabled />
         </label>
 
         <div className="mb-4">
