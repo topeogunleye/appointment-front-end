@@ -49,11 +49,6 @@ const authSlice = createSlice({
       status: 'idle',
       error: null,
     }),
-    loginSuccess: (state, action) => ({
-      ...state,
-      token: action.payload.jwt,
-      user: action.payload.user,
-    }),
   },
   extraReducers: (builder) => {
     builder
@@ -89,8 +84,6 @@ const authSlice = createSlice({
   },
 });
 
-export const {
-  setToken, setUser, clearAuthState, loginSuccess,
-} = authSlice.actions;
+export const { setToken, setUser, clearAuthState } = authSlice.actions;
 
 export default authSlice.reducer;
