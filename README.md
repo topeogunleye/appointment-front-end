@@ -41,7 +41,6 @@
   </ul>
 </details>
 
-
 ### Key Features <a name="key-features"></a>
 
 - **[Fectch API]**
@@ -63,13 +62,11 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-
 - Create React App
 
-   ```sh
-   npm i create-react-app
-   ```
-   
+  ```sh
+  npm i create-react-app
+  ```
 
 ### Setup
 
@@ -88,9 +85,9 @@ Install this project with:
 
 - Install Node Modules
 
-   ```sh
-   npm install
-   ```
+  ```sh
+  npm install
+  ```
 
 ### Usage
 
@@ -98,9 +95,9 @@ To run the project, execute the following command:
 
 - Start the development server
 
-   ```sh
-   npm start
-   ```
+  ```sh
+  npm start
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,6 +108,12 @@ To run the project, execute the following command:
 - GitHub: [@topeogunleye](https://github.com/topeogunleye)
 - Twitter: [@tope_leye](https://twitter.com/tope_leye)
 - LinkedIn: [ogunleye](https://linkedin.com/in/ogunleye)
+
+👤 **David Amon-Cofie**
+
+- GitHub: [@amon-cofie](https://github.com/amon-cofie)
+- Twitter: [@amon_cofie](https://twitter.com/amon_cofie)
+- LinkedIn: [David Amon-Cofie](https://www.linkedin.com/in/david-amon-cofie-2389ab241/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,7 +141,7 @@ If you like this project, please star it here on GitHub
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank my  learning teammates at Microverse
+I would like to thank my learning teammates at Microverse
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
