@@ -7,10 +7,10 @@ import { fetchServices } from '../../redux/reservationSlice';
 const Reservations = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservations = useSelector((state) => state.reservation.formData);
-  // console.log(reservations);
-  // const isLoading = useSelector((state) => state.isLoading);
-  const user = useSelector((state) => state.auth.user); // assuming you have a currentUser state
+  const reservations = useSelector((state) => (state.reservation.formData
+    ? state.reservation.formData : null));
+  const isLoading = useSelector((state) => state.isLoading);
+  const user = useSelector((state) => (state.auth.user ? state.auth.user : null));
   // console.log(user);
   useEffect(() => {
     dispatch(fetchServices());
@@ -20,7 +20,7 @@ const Reservations = () => {
     navigate('/');
   };
 
-  if (reservations === null) {
+  if (!reservations || isLoading) {
     return <p>Loading...</p>;
   } if (reservations.length === 0) {
     return (
@@ -44,7 +44,7 @@ const Reservations = () => {
         </div>
       </div>
     );
-  } if (user === null) {
+  } if (!user) {
     // redirect to login page
     navigate('/loginsignup');
   }
