@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { IconContext } from 'react-icons';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Carousel.css';
 import './CarouselResponsive.css';
