@@ -7,12 +7,13 @@ import { fetchServices } from '../../redux/reservationSlice';
 const Reservations = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservations = useSelector((state) => (state.reservation.formData
-    ? state.reservation.formData : null));
-  console.log('reservations:', reservations);
+  const reservations = useSelector((state) =>
+    state.reservation.formData ? state.reservation.formData : null,
+  );
   const isLoading = useSelector((state) => state.isLoading);
-  const user = useSelector((state) => (state.auth.user ? state.auth.user : null));
-  console.log(user);
+  const user = useSelector((state) =>
+    state.auth.user ? state.auth.user : null,
+  );
   useEffect(() => {
     dispatch(fetchServices());
   }, [dispatch]);
@@ -23,7 +24,8 @@ const Reservations = () => {
 
   if (!reservations) {
     return <p>Loading...</p>;
-  } if (!Object.values(reservations).length) {
+  }
+  if (!Object.values(reservations).length) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <button
@@ -45,7 +47,8 @@ const Reservations = () => {
         </div>
       </div>
     );
-  } if (!user) {
+  }
+  if (!user) {
     // redirect to login page
     navigate('/loginsignup');
   }
@@ -66,7 +69,7 @@ const Reservations = () => {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-            <th
+              <th
                 scope="col"
                 className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
@@ -117,34 +120,35 @@ const Reservations = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {userReservations && userReservations.map((service) => (
-              <tr key={service.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {service.username}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {service.date}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {service.vehicle}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                  {service.model}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                  {service.year}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                  {service.color}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                  {service.location}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                  {service.service}
-                </td>
-              </tr>
-            ))}
+            {userReservations &&
+              userReservations.map((service) => (
+                <tr key={service.id}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {service.username}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {service.date}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {service.vehicle}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.model}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.year}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.color}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.location}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.service}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
