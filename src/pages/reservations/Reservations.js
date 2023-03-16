@@ -7,9 +7,12 @@ import { fetchServices } from '../../redux/reservationSlice';
 const Reservations = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservations = useSelector((state) => (state.reservation.formData ? state.reservation.formData : null));
-  const isLoading = useSelector((state) => state.isLoading);
-  const user = useSelector((state) => (state.auth.user ? state.auth.user : null));
+  const reservations = useSelector((state) =>
+    state.reservation.formData ? state.reservation.formData : null,
+  );
+  const user = useSelector((state) =>
+    state.auth.user ? state.auth.user : null,
+  );
   useEffect(() => {
     dispatch(fetchServices());
   }, [dispatch]);
@@ -116,8 +119,8 @@ const Reservations = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {userReservations
-              && userReservations.map((service) => (
+            {userReservations &&
+              userReservations.map((service) => (
                 <tr key={service.id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     {service.username}
