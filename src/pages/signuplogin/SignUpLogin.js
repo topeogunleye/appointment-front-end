@@ -5,14 +5,14 @@ import LoginForm from '../loginform/LoginForm';
 import SignInForm from '../signinform/SignInForm';
 
 const Loginsignup = () => {
+  const [, setUser] = useState({});
   const [form, setForm] = useState('');
   const selector = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
+
   const handleLogin = (user) => {
-    dispatch(loginSuccess(user.token)); // Dispatch the loginSuccess action with the user's token
     setUser(user);
   };
-  console.log(user);
 
   const handleFormSwitch = (input) => {
     setForm(input);
