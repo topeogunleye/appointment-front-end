@@ -6,7 +6,7 @@
 
 .service-details-styles td,
 .service-details-styles th {
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   text-align: left;
   padding: 8px;
 }
@@ -19,7 +19,7 @@
 }
 
 .service-details-styles tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #ddd;
 }
 
 .back-button {

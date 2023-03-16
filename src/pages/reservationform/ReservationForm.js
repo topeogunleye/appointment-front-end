@@ -1,33 +1,81 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DatePicker from 'react-datepicker';
+import { useNavigate } from 'react-router-dom'; // import useNavigate
+import DatePicker from 'react-multi-date-picker';
+import InputIcon from 'react-multi-date-picker/components/input_icon';
 import { postServices } from '../../redux/reservationSlice';
+import { handleOptionChange } from '../../redux/selectDropdownSlice';
+import './ReservationForm.css';
 
 const ReservationForm = () => {
+  const selectedOption = useSelector((state) => state.selectDropdown.selectedOption);
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // initialize useNavigate
   const [vehicle, setVehicle] = useState('');
   const [model, setModel] = useState('');
   const [year, setYear] = useState('');
   const [color, setColor] = useState('');
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(selectedOption);
   const [service, setService] = useState('');
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+
   const isLoading = useSelector((state) => state.isLoading);
-  const userId = useSelector((state) => state.auth.user.id);
+  const userId = useSelector((state) => (state.auth.user ? state.auth.user.id : null));
+  const userName = useSelector((state) => (state.auth.user ? state.auth.user.username : null));
+
+  // Watch for changes to the selectedOption state value, and update location accordingly
+  useEffect(() => {
+    setLocation(selectedOption);
+  }, [selectedOption]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     dispatch(postServices({
-      startDate, vehicle, model, year, color, location, service, userId,
+      selectedDate: startDate,
+      data:
+       {
+         vehicle, model, year, color, location, service, userId, username: userName,
+       },
     }));
+    // Reset the form after submission
+    setVehicle('');
+    setModel('');
+    setYear('');
+    setColor('');
+    setService('');
+
+    navigate('/AddReservationForm'); // redirect to home page after form submission
   };
+
+  const handleDateChange = (selectedDate) => {
+    setStartDate(selectedDate); // update startDate variable with selected date
+  };
+
+  // Check if the user is logged in, and redirect to login page if not
+  useEffect(() => {
+    if (!userId) {
+      navigate('/loginsignup');
+    }
+  }, [userId, navigate]);
 
   return (
     <div className="">
       <form onSubmit={handleFormSubmit} className="max-w-lg mx-auto p-8">
-        {/* temi look here */}
-        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        <label htmlFor="username" className="block font-medium mb-2 flex items-center justify-center">
+          Name:
+          {' '}
+          <input type="text" className="ml-34" value={userName || ''} disabled />
+        </label>
+
+        <div className="mb-4">
+          <div className="datepicker-container">
+            <label htmlFor="datepicker" className="block font-medium mb-2">
+              Select Date:
+            </label>
+            <DatePicker id="datepicker" value={startDate} onChange={handleDateChange} render={<InputIcon />} />
+          </div>
+
+        </div>
         {/* please */}
         <div className="mb-4">
           <label htmlFor="vehicle" className="block font-medium mb-2">
@@ -90,17 +138,15 @@ const ReservationForm = () => {
           <label htmlFor="location" className="block font-medium mb-2">
             Location
             <select
-              id="location"
-              name="location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              value={selectedOption}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+              onChange={(e) => dispatch(handleOptionChange(e.target.value))}
             >
-              <option value="">Select a location</option>
-              <option value="new-york">New York</option>
-              <option value="los-angeles">Los Angeles</option>
-              <option value="chicago">Chicago</option>
-              <option value="miami">Miami</option>
+              <option>New York</option>
+              <option>Los Angeles</option>
+              <option>Chicago</option>
+              <option>Houston</option>
+              <option>Philadelphia</option>
             </select>
           </label>
         </div>

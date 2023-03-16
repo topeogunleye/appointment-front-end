@@ -7,11 +7,8 @@ import { fetchServices } from '../../redux/reservationSlice';
 const Reservations = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservations = useSelector((state) => state.reservation.formData);
-  // console.log(reservations);
-  // const isLoading = useSelector((state) => state.isLoading);
-  const user = useSelector((state) => state.auth.user); // assuming you have a currentUser state
-  // console.log(user);
+  const reservations = useSelector((state) => (state.reservation.formData ? state.reservation.formData : null));
+  const user = useSelector((state) => (state.auth.user ? state.auth.user : null));
   useEffect(() => {
     dispatch(fetchServices());
   }, [dispatch]);
@@ -20,9 +17,10 @@ const Reservations = () => {
     navigate('/');
   };
 
-  if (reservations === null) {
+  if (!reservations) {
     return <p>Loading...</p>;
-  } if (reservations.length === 0) {
+  }
+  if (!Object.values(reservations).length) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <button
@@ -44,7 +42,8 @@ const Reservations = () => {
         </div>
       </div>
     );
-  } if (user === null) {
+  }
+  if (!user) {
     // redirect to login page
     navigate('/loginsignup');
   }
@@ -52,10 +51,11 @@ const Reservations = () => {
   let userReservations = [];
 
   if (user && reservations) {
-    userReservations = reservations.filter(
-      (reservation) => reservation.id === user.id,
+    userReservations = Object.values(reservations).filter(
+      (reservation) => reservation.username === user.username,
     );
   }
+
   return (
     <div className="grid lg:grid-cols-custom">
       <Sidebar />
@@ -64,6 +64,18 @@ const Reservations = () => {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
+              <th
+                scope="col"
+                className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Date
+              </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -103,28 +115,35 @@ const Reservations = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {userReservations && userReservations.map((service) => (
-              <tr key={service.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {service.vehicle}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {service.model}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {service.year}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {service.color}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {service.location}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {service.service}
-                </td>
-              </tr>
-            ))}
+            {userReservations
+              && userReservations.map((service) => (
+                <tr key={service.id}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {service.username}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {service.date}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {service.vehicle}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.model}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.year}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.color}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.location}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
+                    {service.service}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

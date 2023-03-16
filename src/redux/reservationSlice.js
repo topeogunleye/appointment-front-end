@@ -13,18 +13,17 @@ export const fetchServices = createAsyncThunk('FETCH_SERVICES', async () => {
   return data;
 });
 
-export const postServices = createAsyncThunk('POST_SERVICES', async (data) => {
+export const postServices = createAsyncThunk('POST_SERVICES', async ({ selectedDate, data }) => {
   const req = await fetch(SERVICES_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ ...data, date: selectedDate }),
   });
   const res = await req.json();
-  const result = await res.data();
-  return result;
+  return res;
 });
 
 const reservationSlice = createSlice({

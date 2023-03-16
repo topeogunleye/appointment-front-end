@@ -28,6 +28,12 @@ export const fetchService = createAsyncThunk('fetchService', async () => {
   return services;
 });
 
+export const fetchServiceById = createAsyncThunk('fetchServiceById', async (id) => {
+  const response = await fetch(`${API_URL}/${id}`);
+  const service = await response.json();
+  return service;
+});
+
 export const removeService = createAsyncThunk('removeService', async (id) => {
   const response = await fetch(`${API_URL}/${id}`, {
     method: 'DELETE',
@@ -60,6 +66,17 @@ const serviceSlice = createSlice({
       services: action.payload,
     }),
     [fetchService.rejected]: (state, action) => ({
+      ...state,
+      isLoading: false,
+      error: action.error.message,
+    }),
+    [fetchServiceById.pending]: (state) => ({ ...state, isLoading: true }),
+    [fetchServiceById.fulfilled]: (state, action) => ({
+      ...state,
+      isLoading: false,
+      services: [action.payload],
+    }),
+    [fetchServiceById.rejected]: (state, action) => ({
       ...state,
       isLoading: false,
       error: action.error.message,

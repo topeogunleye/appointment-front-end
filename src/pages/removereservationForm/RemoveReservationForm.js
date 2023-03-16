@@ -21,7 +21,7 @@ const RemoveReservationForm = () => {
   return (
     <div className="grid lg:grid-cols-custom">
       <Sidebar />
-      <div className="flex flex-col items-center justify-center w-full h-screen">
+      <div className="flex flex-col items-center justify-center w-full h-screen mb-60 mt-52">
         <h1>Services</h1>
         {isLoading && <p>Loading...</p>}
         {!isLoading && services.length === 0 && <p>No services found.</p>}

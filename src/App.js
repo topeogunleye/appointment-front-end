@@ -11,7 +11,6 @@ import ReservationForm from './pages/reservationform/ReservationForm';
 import ServicesForm from './pages/addservice/addseviceform';
 import Homepage from './pages/home/Homepage';
 import ServiceDetails from './pages/service_details/ServiceDetails';
-import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [serviceDetailsData, setServiceDetailsData] = useState({});
@@ -24,12 +23,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes className="flex">
-          <Route
-            path="/"
-            element={(
-              <Homepage />
-            )}
-          />
+          <Route path="/" element={<Homepage />} />
           <Route
             path="/CarRepairs"
             element={<CarRepairs handleServiceClick={handleServiceClick} />}
@@ -44,13 +38,8 @@ function App() {
           <Route path="/ReservationForm" element={<ReservationForm />} />
           <Route path="loginsignup" element={<Loginsignup />} />
           <Route
-            path="/service_details"
-            element={(
-              <div className="flex">
-                <Sidebar />
-                <ServiceDetails details={serviceDetailsData} />
-              </div>
-            )}
+            path="/services/:id"
+            element={<ServiceDetails details={serviceDetailsData} />}
           />
           <Route path="*" element={<div>404 Not Found</div>} />
           <Route path="/AddService" element={<ServicesForm />} />
