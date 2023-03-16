@@ -22,9 +22,8 @@ const Carousel = (props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrevClick = () => {
-    const newStartIndex =
-      (currentImageIndex - 3 + services.services.length) %
-      services.services.length;
+    const newStartIndex = (currentImageIndex - 3 + services.services.length)
+      % services.services.length;
     setCurrentImageIndex(newStartIndex);
   };
 
