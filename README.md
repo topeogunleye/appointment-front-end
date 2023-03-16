@@ -1,8 +1,11 @@
 <a name="readme-top"></a>
 
 <div align="center">
+  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
+  <img class="README-logo" src="./app/assets/logo-jpg.jpg" alt="logo" width="140"  height="150" />
+  <br/>
 
-  <h3><b>Microverse README Template</b></h3>
+  <h3><b>Book an Appointment Front-End README</b></h3>
 
 </div>
 
@@ -114,6 +117,17 @@ To run the project, execute the following command:
 - GitHub: [@amon-cofie](https://github.com/amon-cofie)
 - Twitter: [@amon_cofie](https://twitter.com/amon_cofie)
 - LinkedIn: [David Amon-Cofie](https://www.linkedin.com/in/david-amon-cofie-2389ab241/)
+
+👤 **Shuhad Loofer**
+
+- GitHub: [@Shuhad786](https://github.com/Shuhad786)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/shuhad-loofer)
+
+👤 **Vitalis Mutwiri**
+
+- GitHub: [@svitalis123](https://github.com/svitalis123)
+- Twitter: [@WilsonVitalis](https://twitter.com/WilsonVitalis)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/vitalismutwiri)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
