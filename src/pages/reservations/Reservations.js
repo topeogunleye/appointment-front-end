@@ -66,6 +66,18 @@ const Reservations = () => {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
+            <th
+                scope="col"
+                className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Date
+              </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -108,21 +120,27 @@ const Reservations = () => {
             {userReservations && userReservations.map((service) => (
               <tr key={service.id}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  {service.username}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  {service.date}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {service.vehicle}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.model}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.year}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.color}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.location}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                   {service.service}
                 </td>
               </tr>

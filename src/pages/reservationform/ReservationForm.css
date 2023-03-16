@@ -101,3 +101,7 @@
 .datepicker-container .react-datepicker__navigation--next {
   right: 8px;
 }
+
+.margin-left {
+  margin-right: 1em;
+}
