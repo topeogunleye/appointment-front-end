@@ -8,7 +8,8 @@ const selectDropdownSlice = createSlice({
   reducers: {
     setSelectedOption: (state, action) => ({
       // Update the selectedOption state with the payload
-      ...state, selectedOption: action.payload,
+      ...state,
+      selectedOption: action.payload,
     }),
   },
 });
@@ -16,7 +17,6 @@ const selectDropdownSlice = createSlice({
 export const { setSelectedOption } = selectDropdownSlice.actions; // Export the action creator
 
 export const handleOptionChange = (selectedOption) => (dispatch) => {
-  console.log('Selected option: ', selectedOption);
   dispatch(setSelectedOption(selectedOption));
 };
 
