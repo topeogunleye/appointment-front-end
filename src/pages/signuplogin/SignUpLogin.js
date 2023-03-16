@@ -6,14 +6,12 @@ import SignInForm from '../signinform/SignInForm';
 import { loginSuccess } from '../../redux/auth/authSlice';
 
 const Loginsignup = () => {
-  const [user, setUser] = useState({});
   const [form, setForm] = useState('');
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
 
   const handleLogin = (user) => {
-    setUser(user);
     dispatch(loginSuccess(user.token)); // Dispatch the loginSuccess action with the user's token
   };
 
@@ -55,18 +53,34 @@ const Loginsignup = () => {
       </button>
       <div className="max-w-md w-full">
         <div className="text-center text-2xl font-bold mb-8">
-          <h1 className="text-gray-900">
-            Welcome!
-          </h1>
+          <h1 className="text-gray-900">Welcome!</h1>
         </div>
         <div className="flex space-x-4 mb-4">
-          <button type="button" className="bg-gray-900 text-white py-2 px-4 rounded" onClick={() => handleFormSwitch('signUp')}>Sign Up</button>
-          <button type="button" className="bg-gray-200 text-gray-900 py-2 px-4 rounded" onClick={() => handleFormSwitch('login')}>Log In</button>
+          <button
+            type="button"
+            className="bg-gray-900 text-white py-2 px-4 rounded"
+            onClick={() => handleFormSwitch('signUp')}
+          >
+            Sign Up
+          </button>
+          <button
+            type="button"
+            className="bg-gray-200 text-gray-900 py-2 px-4 rounded"
+            onClick={() => handleFormSwitch('login')}
+          >
+            Log In
+          </button>
         </div>
         <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           {renderForm()}
         </div>
-        <button type="button" onClick={handleAuthClick} className="bg-gray-900 text-white py-2 px-4 rounded">Access Authorized Route</button>
+        <button
+          type="button"
+          onClick={handleAuthClick}
+          className="bg-gray-900 text-white py-2 px-4 rounded"
+        >
+          Access Authorized Route
+        </button>
       </div>
     </div>
   );
