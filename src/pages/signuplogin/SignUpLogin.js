@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../loginform/LoginForm';
 import SignInForm from '../signinform/SignInForm';
-import { loginSuccess } from '../../redux/auth/authSlice';
 
 const Loginsignup = () => {
   const [form, setForm] = useState('');
-  const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
+  const selector = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
-
   const handleLogin = (user) => {
     dispatch(loginSuccess(user.token)); // Dispatch the loginSuccess action with the user's token
+    setUser(user);
   };
+  console.log(user);
 
   const handleFormSwitch = (input) => {
     setForm(input);
   };
 
   const handleAuthClick = () => {
+    const token = selector;
     fetch('http://127.0.0.1:8000/user_is_authed', {
       headers: {
         Authorization: `Bearer ${token}`,
