@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="min-h-screen flex items-center justify-center bg-gray-100"
+>
+  <button
+    className="absolute top-1 left-1 sm:top-4 sm:left-4 hover:bg-indigo-600 text-white bg-green py-1 px-1 sm:py-2 sm:px-4"
+    onClick={[Function]}
+    type="button"
+  >
+    « Go Back
+  </button>
+  <div
+    className="max-w-md w-full"
+  >
+    <div
+      className="text-center text-2xl font-bold mb-8"
+    >
+      <h1
+        className="text-gray-900"
+      >
+        Welcome!
+      </h1>
+    </div>
+    <div
+      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    >
+      <p
+        className="text-center text-gray-700 text-base"
+      >
+        You have no reservations yet.
+      </p>
+    </div>
+  </div>
+</div>
+`;
