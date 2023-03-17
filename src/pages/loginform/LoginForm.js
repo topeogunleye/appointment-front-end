@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/authSlice';
 
-function LoginForm({ handleLogin }) {
+const LoginForm = ({ handleLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -81,7 +81,7 @@ function LoginForm({ handleLogin }) {
       </div>
     </div>
   );
-}
+};
 
 LoginForm.propTypes = {
   handleLogin: PropTypes.func.isRequired,

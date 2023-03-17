@@ -12,7 +12,7 @@ import ServicesForm from './pages/addservice/addseviceform';
 import Homepage from './pages/home/Homepage';
 import ServiceDetails from './pages/service_details/ServiceDetails';
 
-function App() {
+const App = () => {
   const [serviceDetailsData, setServiceDetailsData] = useState({});
 
   const handleServiceClick = (data) => {
@@ -47,6 +47,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

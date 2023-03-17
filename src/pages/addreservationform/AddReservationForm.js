@@ -6,7 +6,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import './AddReservationForm.css';
 import { setSelectedOption } from '../../redux/selectDropdownSlice';
 
-function AddReservationForm() {
+const AddReservationForm = () => {
   const selectedOption = useSelector(
     (state) => state.selectDropdown.selectedOption,
   );
@@ -62,6 +62,6 @@ function AddReservationForm() {
       </div>
     </div>
   );
-}
+};
 
 export default AddReservationForm;

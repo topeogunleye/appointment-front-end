@@ -30,7 +30,7 @@ const useClickOutside = (handler) => {
   return domNode;
 };
 
-export default function Sidebar() {
+const Sidebar = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
@@ -175,4 +175,6 @@ export default function Sidebar() {
       </nav>
     </>
   );
-}
+};
+
+export default Sidebar;

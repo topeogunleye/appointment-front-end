@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { fetchServiceById } from '../../redux/serviceSlice';
 
-function ServiceDetails() {
+const ServiceDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -89,6 +89,6 @@ function ServiceDetails() {
       </div>
     </div>
   );
-}
+};
 
 export default ServiceDetails;
