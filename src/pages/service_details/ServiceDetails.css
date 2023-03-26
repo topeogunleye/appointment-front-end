@@ -1,0 +1,37 @@
+.service-details-styles table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.service-details-styles td,
+.service-details-styles th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.service-details-styles {
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.service-details-styles tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+.back-button {
+  margin-left: 0;
+}
+
+.service-image {
+  width: 800px;
+  height: 500px;
+  object-position: left top;
+}
+
+.image-back-section {
+  width: 70%;
+}
