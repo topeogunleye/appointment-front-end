@@ -20,7 +20,7 @@ const Loginsignup = () => {
 
   const handleAuthClick = () => {
     const token = selector;
-    fetch('http://127.0.0.1:8000/user_is_authed', {
+    fetch('https://appointment-6ueu.onrender.com/user_is_authed', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

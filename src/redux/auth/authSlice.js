@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const login = createAsyncThunk('auth/login', async (credentials) => {
-  const response = await fetch('http://127.0.0.1:8000/login', {
+  const response = await fetch('https://appointment-6ueu.onrender.com/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
 });
 
 export const signup = createAsyncThunk('auth/signup', async (credentials) => {
-  const response = await fetch('http://127.0.0.1:8000/users', {
+  const response = await fetch('https://appointment-6ueu.onrender.com/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

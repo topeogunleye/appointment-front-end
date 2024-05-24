@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-const API_URL = 'http://[::1]:8000/services';
+const API_URL = 'https://appointment-6ueu.onrender.com/services';
 
 export const postService = createAsyncThunk('postService', async (data) => {
   const response = await fetch(API_URL, {

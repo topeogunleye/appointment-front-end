@@ -5,7 +5,7 @@ const initialState = {
   isLoading: false,
 };
 
-const SERVICES_URL = 'http://[::1]:8000/services';
+const SERVICES_URL = 'https://appointment-6ueu.onrender.com/services';
 
 export const fetchServices = createAsyncThunk('GET_SERVICES', async () => {
   const req = await fetch(SERVICES_URL);
